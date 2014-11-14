@@ -4,19 +4,21 @@ import com.tumblr.jumblr.JumblrClient;
 import com.tumblr.jumblr.types.Blog;
 
 /**
- * Hello world!
+ *
  *
  */
 public class App 
 {
     public static void main( String[] args )
     {
+      System.out.println( "harhar" );
+
       // Authenticate via OAuth
       JumblrClient client = new JumblrClient(
               "fP4T709QbfTBOaR4mHLNFeE6BgbwxQw10qSypEN9onlWKGwsBn",
               "bnOedxoYrDveIr6mbg793VLkyhEF8RviaYyFFvuiWpajXZCFsB"
       );
-      System.out.println( "heheh" );
+      System.out.println( "harhar" );
 
       client.setToken(
               "UmFBwJCEgshbDAwKwHbRyfHwxo7k2VO4OI41IOnv1Ouklk3XnE",
@@ -29,6 +31,6 @@ public class App
 
       System.out.println( blog.getName() );
 
-      System.out.println( "heheh" );
+      System.out.println( "blow" );
     }
 }
