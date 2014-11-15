@@ -1,7 +1,11 @@
 package eecs285;
 
+
+
+import java.util.List;
+
 import com.tumblr.jumblr.JumblrClient;
-import com.tumblr.jumblr.types.Blog;
+import com.tumblr.jumblr.types.*;
 
 /**
  *
@@ -28,8 +32,15 @@ public class App
 
       // Make the request
       Blog blog = client.blogInfo("delicatedragonstarlight.tumblr.com");
+      
 
       System.out.println( blog.getName() );
+      List<Post> list = client.blogPosts("ikimaru.tumblr.com");
+      System.out.println(list.size());
+      for(Post post : list)
+      {
+        System.out.println(post.toString());
+      }
 
       System.out.println( "blow" );
     }
