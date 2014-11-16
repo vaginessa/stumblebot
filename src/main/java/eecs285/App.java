@@ -5,9 +5,7 @@ package eecs285;
 import java.util.List;
 
 import com.tumblr.jumblr.JumblrClient;
-import com.tumblr.jumblr.types.AnswerPost;
-import com.tumblr.jumblr.types.Blog;
-import com.tumblr.jumblr.types.Post;
+import com.tumblr.jumblr.types.*;
 
 /**
  *
@@ -15,6 +13,10 @@ import com.tumblr.jumblr.types.Post;
  */
 public class App 
 {
+    static List<String> globalTagsSeeded;
+    static List<String> globalTags;
+    static List<Post> globalPosts;
+    static List<String> globalReblogTexts;
     public static void main( String[] args )
     {
       System.out.println( "harhar" );
@@ -83,4 +85,18 @@ public class App
 
       System.out.println( "blow" );
     }
+    
+    
 }
+
+/*Startup();
+while(1)
+{
+  updateGlobals();
+  Reblog();
+  updateGUI();
+  if(quit)
+  {
+    break;
+  }
+}*/
