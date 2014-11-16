@@ -15,5 +15,9 @@ public class FetchPostsAction implements ActionListener
   public void actionPerformed(ActionEvent actionEvent)
   {
     List<Post> retrievedPosts = FindPosts.findFrom(App.globalTagsSeeded);
+    for(Post test : retrievedPosts)
+    {
+      System.out.println(test.toString());
+    }
   }
 }

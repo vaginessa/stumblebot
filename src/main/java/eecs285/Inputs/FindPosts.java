@@ -3,8 +3,9 @@ package eecs285.Inputs;
 import java.util.List;
 import java.util.Vector;
 
-import com.tumblr.jumblr.JumblrClient;
 import com.tumblr.jumblr.types.Post;
+
+import eecs285.App;
 
 //Handles all acquisition of new Posts
 public class FindPosts
@@ -16,8 +17,15 @@ public class FindPosts
     List<Post> currentPosts = new Vector<Post>();
     for(String stringIter : inTags)
     {
-      //currentPosts = JumblrClient.tagged(stringIter);
+      currentPosts = App.client.tagged(stringIter);
+      for(Post stringIterCurrent : currentPosts)
+      {
+        if(!allPosts.contains(stringIterCurrent))
+        {
+          ((Vector<Post>) allPosts).addElement(stringIterCurrent);
+        }
+      }
     }
-    return null;
+    return allPosts;
   }
 };
