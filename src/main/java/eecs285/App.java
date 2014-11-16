@@ -45,7 +45,7 @@ public class App
 
 
       win = new TumblrReblogGUI();
-      win.setMinimumSize(new Dimension(1000, 400));
+      win.setMinimumSize(new Dimension(400, 400));
       win.pack();
       win.setVisible(true);
       win.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

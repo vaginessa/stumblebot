@@ -57,4 +57,9 @@ public class AddPostFromURLEvent implements ActionListener
     frameDialog.setVisible(true);
   }
 
+  public static JDialog getFrameDialog()
+  {
+    return frameDialog;
+  }
+
 }
