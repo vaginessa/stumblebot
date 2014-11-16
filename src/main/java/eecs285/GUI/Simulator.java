@@ -12,6 +12,8 @@ import java.util.Vector;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
+import com.tumblr.jumblr.types.Post;
+
 import eecs285.App;
 
 public class Simulator
@@ -24,11 +26,11 @@ public class Simulator
     }
   }
 
-  public static void deleteTag(String todelete)
+  public static void deleteTag(String toDelete)
   {
-    if( App.globalTagsSeeded.contains(todelete) )
+    if( App.globalTagsSeeded.contains(toDelete) )
     {
-      App.globalTagsSeeded.remove(todelete);
+      App.globalTagsSeeded.remove(toDelete);
     }
   }
 
@@ -40,6 +42,34 @@ public class Simulator
     for( String tagIter : App.globalTagsSeeded )
     {
       TumblrReblogGUI.getTagDefaultListModel().addElement(tagIter);
+    }
+  }
+
+  public static void deletePost(String toDeleteID)
+  {
+    long postID = Long.parseLong(toDeleteID);
+    System.out.println(postID);
+    for(Post postIter : App.globalPosts)
+    {
+      System.out.println(postIter.getId());
+      if(postIter.getId().equals(postID))
+      {
+        App.globalPosts.remove(postIter);
+        break;
+      }
+    }
+  }
+
+  public static void updatePosts()
+  {
+    java.util.Collections.sort(App.globalTagsSeeded);
+    TumblrReblogGUI.saved = false;
+    TumblrReblogGUI.getPostDefaultListModel().clear();
+    for( Post postIter : App.globalPosts )
+    {
+      TumblrReblogGUI.getPostDefaultListModel().addElement(
+          String.format("Blog Name: %s Post ID: %d Tags: %s",
+              postIter.getBlogName(), postIter.getId(), postIter.getTags()));
     }
   }
 

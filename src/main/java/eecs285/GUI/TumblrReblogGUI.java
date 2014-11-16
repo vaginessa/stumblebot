@@ -2,7 +2,6 @@ package eecs285.GUI;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
@@ -17,8 +16,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-
-import com.tumblr.jumblr.types.Post;
 
 import eecs285.GUI.Events.AddPostFromURLEvent;
 import eecs285.GUI.Events.AddTagsEvent;
@@ -145,7 +142,7 @@ public class TumblrReblogGUI extends JFrame
     postList = new JList<String>(defaultPostList);
     postList.addMouseListener(new SelectPostDetail());
     postScrollPane = new JScrollPane(postList);
-    postScrollPane.setPreferredSize(new Dimension(300, 400));
+    postScrollPane.setPreferredSize(new Dimension(500, 400));
 
     postListPanel.setLayout(new BoxLayout(postListPanel, BoxLayout.Y_AXIS));
     postListPanel.add(postLabel);
@@ -175,16 +172,6 @@ public class TumblrReblogGUI extends JFrame
     add(buttonsRow1);
     // add(automatePanel);
     add(creditsPanel);
-  }
-
-  // Updates the JList with all the elements in the vehicle array.
-  public static void updatePostList(List<Post> postArray)
-  {
-    getPostDefaultListModel().clear();
-    for( Post postIter : postArray )
-    {
-      getPostDefaultListModel().addElement(postIter.toString());
-    }
   }
 
   public static JList<String> getTagJList()
