@@ -34,7 +34,7 @@ public class AddTagsEvent implements ActionListener
 
     tagsLabel = new JLabel(
         "Please enter the tag(s) you wish you wish to add," +
-        " seperated by a comma. Spaces will be ignored",
+        " seperated by a comma. Spaces will be ignored!",
         SwingConstants.CENTER);
     tagsText = new JTextField(40);
     okButton = new JButton("OK");

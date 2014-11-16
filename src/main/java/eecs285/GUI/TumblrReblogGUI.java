@@ -104,6 +104,7 @@ public class TumblrReblogGUI extends JFrame
     fileMenu.add(saveListOfPosts);
     fileMenu.add(exitProgram);
     editMenu.add(addTags);
+    editMenu.add(deleteTags);
     editMenu.add(addPostFromURL);
 
     menuBar.add(fileMenu);
