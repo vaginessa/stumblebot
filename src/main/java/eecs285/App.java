@@ -49,9 +49,9 @@ public class App
 
     // Make the request
 
-    List<Post> list = client.blogPosts("ikimaru.tumblr.com");
-    System.out.println(list.size());
-    for( Post post : list )
+    //List<Post> list = client.blogPosts("ikimaru.tumblr.com");
+    //System.out.println(list.size());
+    /*for( Post post : list )
     {
       System.out.println(post.toString());
       if( post.getType().equals("answer") )
@@ -87,7 +87,7 @@ public class App
       {
 
       }
-    }
+    }*/
     System.out.println("blow");
   }
 }
