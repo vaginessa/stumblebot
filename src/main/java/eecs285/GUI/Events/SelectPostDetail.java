@@ -18,7 +18,7 @@ public class SelectPostDetail extends MouseAdapter
 {
   private static JDialog frameDialog;
   private static JPanel northPanel;
-  private static JPanel centerPanel;
+  //private static JPanel centerPanel;
   private static JPanel southPanel;
   private static JLabel confirm;
   private static JButton deleteButton;
@@ -30,7 +30,7 @@ public class SelectPostDetail extends MouseAdapter
     {
       frameDialog = new JDialog(App.win, "Post Information");
       northPanel = new JPanel(new FlowLayout());
-      centerPanel = new JPanel(new FlowLayout());
+      //centerPanel = new JPanel(new FlowLayout());
       southPanel = new JPanel(new FlowLayout());
 
       int location = TumblrReblogGUI.getPostJList().locationToIndex(

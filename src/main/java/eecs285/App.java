@@ -8,7 +8,6 @@ import java.util.Vector;
 import javax.swing.WindowConstants;
 
 import com.tumblr.jumblr.JumblrClient;
-import com.tumblr.jumblr.types.AnswerPost;
 import com.tumblr.jumblr.types.Blog;
 import com.tumblr.jumblr.types.Post;
 
