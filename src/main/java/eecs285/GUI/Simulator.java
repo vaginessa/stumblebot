@@ -1,6 +1,6 @@
 package eecs285.GUI;
 
-public class test
+public class Simulator
 {
 
 }

@@ -8,13 +8,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.SwingConstants;
 
-import eecs285.GUI.Events.AddPostFromURLEvent;
-import eecs285.GUI.Events.AddTagEvent;
-import eecs285.GUI.Events.ExitProgramEvent;
-import eecs285.GUI.Events.LoadListOfPostsEvent;
-import eecs285.GUI.Events.LoadListOfTagsEvent;
-import eecs285.GUI.Events.SaveListOfPostsEvent;
-import eecs285.GUI.Events.SaveListOfTagsEvent;
+import eecs285.GUI.Events.*;
 
 public class TumblrReblogGUI extends JFrame
 {
@@ -29,7 +23,7 @@ public class TumblrReblogGUI extends JFrame
   private static JMenuItem saveListOfTags;
   private static JMenuItem saveListOfPosts;
   private static JMenuItem exitProgram;
-  private static JMenuItem addTag;
+  private static JMenuItem addTags;
   private static JMenuItem addPostFromURL;
   // Items for User Interface
   private static JLabel credits;
@@ -54,21 +48,21 @@ public class TumblrReblogGUI extends JFrame
     saveListOfTags = new JMenuItem("Save List Of Tags");
     saveListOfPosts = new JMenuItem("Save List Of Posts");
     exitProgram = new JMenuItem("Exit Program");
-    addTag = new JMenuItem("Add Tag");
+    addTags = new JMenuItem("Add Tag");
     addPostFromURL = new JMenuItem("Add Post From URL");
     loadListOfTags.addActionListener(new LoadListOfTagsEvent());
     loadListOfPosts.addActionListener(new LoadListOfPostsEvent());
     saveListOfTags.addActionListener(new SaveListOfTagsEvent());
     saveListOfPosts.addActionListener(new SaveListOfPostsEvent());
     exitProgram.addActionListener(new ExitProgramEvent());
-    addTag.addActionListener(new AddTagEvent());
+    addTags.addActionListener(new AddTagsEvent());
     addPostFromURL.addActionListener(new AddPostFromURLEvent());
     fileMenu.add(loadListOfTags);
     fileMenu.add(loadListOfPosts);
     fileMenu.add(saveListOfTags);
     fileMenu.add(saveListOfPosts);
     fileMenu.add(exitProgram);
-    editMenu.add(addTag);
+    editMenu.add(addTags);
     editMenu.add(addPostFromURL);
 
     menuBar.add(fileMenu);
