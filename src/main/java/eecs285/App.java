@@ -2,10 +2,17 @@ package eecs285;
 
 
 
+import java.awt.Dimension;
 import java.util.List;
 
+import javax.swing.WindowConstants;
+
 import com.tumblr.jumblr.JumblrClient;
-import com.tumblr.jumblr.types.*;
+import com.tumblr.jumblr.types.AnswerPost;
+import com.tumblr.jumblr.types.Blog;
+import com.tumblr.jumblr.types.Post;
+
+import eecs285.GUI.TumblrReblogGUI;
 
 /**
  *
@@ -17,12 +24,15 @@ public class App
     public static List<String> globalTags;
     public static List<Post> globalPosts;
     public static List<String> globalReblogTexts;
+    public static TumblrReblogGUI win;
+    public static Blog ourBlog;
+    public static JumblrClient client;
     public static void main( String[] args )
     {
       System.out.println( "harhar" );
 
       // Authenticate via OAuth
-      JumblrClient client = new JumblrClient(
+      client = new JumblrClient(
               "fP4T709QbfTBOaR4mHLNFeE6BgbwxQw10qSypEN9onlWKGwsBn",
               "bnOedxoYrDveIr6mbg793VLkyhEF8RviaYyFFvuiWpajXZCFsB"
       );
@@ -34,11 +44,14 @@ public class App
       );
 
 
-      // Make the request
-      Blog blog = client.blogInfo("delicatedragonstarlight.tumblr.com");
+      win = new TumblrReblogGUI();
+      win.setMinimumSize(new Dimension(1000, 400));
+      win.pack();
+      win.setVisible(true);
+      win.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
       
-
-      System.out.println( blog.getName() );
+      // Make the request
+      
       List<Post> list = client.blogPosts("ikimaru.tumblr.com");
       System.out.println(list.size());
       for(Post post : list)
