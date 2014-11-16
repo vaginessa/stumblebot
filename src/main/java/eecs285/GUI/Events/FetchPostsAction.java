@@ -18,6 +18,7 @@ public class FetchPostsAction implements ActionListener
     for(Post test : retrievedPosts)
     {
       System.out.println(test.toString());
+      System.out.println(test.getPostUrl());
     }
   }
 }
