@@ -5,7 +5,9 @@ package eecs285;
 import java.util.List;
 
 import com.tumblr.jumblr.JumblrClient;
-import com.tumblr.jumblr.types.*;
+import com.tumblr.jumblr.types.AnswerPost;
+import com.tumblr.jumblr.types.Blog;
+import com.tumblr.jumblr.types.Post;
 
 /**
  *
@@ -40,6 +42,43 @@ public class App
       for(Post post : list)
       {
         System.out.println(post.toString());
+        if(post.getType().equals("answer"))
+        {
+          System.out.println(((AnswerPost) post).getQuestion());
+          System.out.println(((AnswerPost) post).getAnswer());
+        }
+        else if(post.getType().equals("audio"))
+        {
+          
+        }
+        else if(post.getType().equals("chat"))
+        {
+          
+        }
+        else if(post.getType().equals("link"))
+        {
+          
+        }
+        else if(post.getType().equals("photo"))
+        {
+          
+        }
+        else if(post.getType().equals("quote"))
+        {
+          
+        }
+        else if(post.getType().equals("safe"))
+        {
+          
+        }
+        else if(post.getType().equals("text"))
+        {
+          
+        }
+        else if(post.getType().equals("video"))
+        {
+          
+        }
       }
 
       System.out.println( "blow" );
