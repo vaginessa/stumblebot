@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by yogesh on 11/16/14.
  */
-public class postButtonActionListener implements ActionListener
+public class PostButtonActionListener implements ActionListener
 {
   public void actionPerformed(ActionEvent event)
   {
