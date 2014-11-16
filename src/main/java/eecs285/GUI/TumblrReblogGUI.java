@@ -1,37 +1,12 @@
 package eecs285.GUI;
 
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.util.List;
-
-import javax.swing.BoxLayout;
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
-
 import com.tumblr.jumblr.types.Post;
+import eecs285.GUI.Events.*;
 
-import eecs285.GUI.Events.AddPostFromURLEvent;
-import eecs285.GUI.Events.AddTagsEvent;
-import eecs285.GUI.Events.CloseWindowEvent;
-import eecs285.GUI.Events.DeleteTagsEvent;
-import eecs285.GUI.Events.ExitProgramEvent;
-import eecs285.GUI.Events.FetchPostsAction;
-import eecs285.GUI.Events.LoadListOfPostsEvent;
-import eecs285.GUI.Events.LoadListOfTagsEvent;
-import eecs285.GUI.Events.SaveListOfPostsEvent;
-import eecs285.GUI.Events.SaveListOfTagsEvent;
-import eecs285.GUI.Events.SelectPostDetail;
-import eecs285.GUI.Events.SelectTagDetail;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.util.List;
 
 public class TumblrReblogGUI extends JFrame
 {
@@ -159,6 +134,7 @@ public class TumblrReblogGUI extends JFrame
     postButton = new JButton("Reblog All Posts");
 
     fetchButton.addActionListener(new FetchPostsAction());
+    postButton.addActionListener(new postButtonActionListener());
 
     buttonsRow1.add(fetchButton);
     buttonsRow1.add(runButton);
