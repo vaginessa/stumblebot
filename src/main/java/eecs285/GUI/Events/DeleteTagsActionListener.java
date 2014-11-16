@@ -2,13 +2,10 @@ package eecs285.GUI.Events;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
-import java.util.List;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
-import eecs285.GUI.TumblrReblogGUI;
+import eecs285.GUI.Simulator;
 
 public class DeleteTagsActionListener implements ActionListener
 {
@@ -23,28 +20,14 @@ public class DeleteTagsActionListener implements ActionListener
       String[] userInputParse = userInput.split(",");
       for(String stringIter : userInputParse)
       {
-        DefaultListModel<String> currentTags = TumblrReblogGUI.getTagDefaultListModel();
-        List<Object> currentTagsArray = Arrays.asList(currentTags.toArray());
-        if(currentTagsArray.contains(stringIter))
-        {
-          TumblrReblogGUI.getTagDefaultListModel().removeElement(
-              stringIter);
-        }
+        Simulator.deleteTag(stringIter);
       }
-      DefaultListModel<String> currentTags = TumblrReblogGUI.getTagDefaultListModel();
-      String[] contents = new String[currentTags.getSize()];
-      for(int iter = 0; iter < currentTags.getSize(); iter++)
-      {
-        contents[iter] = currentTags.elementAt(iter);
-      }
-      TumblrReblogGUI.getTagDefaultListModel().clear();
-      TumblrReblogGUI.updateTagList(contents);
-      
+      Simulator.updateTags();
+      DeleteTagsEvent.getFrameDialog().dispose();
     }
     else
     {
       return;
     }
-    DeleteTagsEvent.getFrameDialog().dispose();
   }
 }
