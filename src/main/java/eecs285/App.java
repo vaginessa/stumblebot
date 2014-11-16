@@ -13,10 +13,10 @@ import com.tumblr.jumblr.types.*;
  */
 public class App 
 {
-    static List<String> globalTagsSeeded;
-    static List<String> globalTags;
-    static List<Post> globalPosts;
-    static List<String> globalReblogTexts;
+    public static List<String> globalTagsSeeded;
+    public static List<String> globalTags;
+    public static List<Post> globalPosts;
+    public static List<String> globalReblogTexts;
     public static void main( String[] args )
     {
       System.out.println( "harhar" );
