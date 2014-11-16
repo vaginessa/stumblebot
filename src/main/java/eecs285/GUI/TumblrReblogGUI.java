@@ -21,6 +21,7 @@ import com.tumblr.jumblr.types.Post;
 
 import eecs285.GUI.Events.AddPostFromURLEvent;
 import eecs285.GUI.Events.AddTagsEvent;
+import eecs285.GUI.Events.CloseWindowEvent;
 import eecs285.GUI.Events.DeleteTagsEvent;
 import eecs285.GUI.Events.ExitProgramEvent;
 import eecs285.GUI.Events.LoadListOfPostsEvent;
@@ -74,8 +75,11 @@ public class TumblrReblogGUI extends JFrame
         new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
     createMenu();
     createUI();
+    setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+    addWindowListener(new CloseWindowEvent());
     setResizable(false);
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setVisible(true);
+
   }
   private void createMenu()
   {
@@ -150,7 +154,7 @@ public class TumblrReblogGUI extends JFrame
 
     fetchButton = new JButton("Update Posts From Seeded Tags");
     runButton = new JButton("Automatically Post");
-    postButton = new JButton("Post All Posts");
+    postButton = new JButton("Reblog All Posts");
     
     buttonsRow1.add(fetchButton);
     buttonsRow1.add(runButton);

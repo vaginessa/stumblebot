@@ -82,10 +82,6 @@ public class App
         {
           
         }
-        else if(post.getType().equals("safe"))
-        {
-          
-        }
         else if(post.getType().equals("text"))
         {
           

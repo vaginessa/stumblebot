@@ -3,6 +3,7 @@ package eecs285.GUI.Events;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import eecs285.App;
@@ -23,7 +24,9 @@ public class ExitProgramEvent implements ActionListener
           "Are you sure that you want to exit the program without saving?", 
           "Confirmation", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION )
       {
-        System.exit(0);
+        App.win.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        App.win.setVisible(false);
+        App.win.dispose();
       }
       else
       {
