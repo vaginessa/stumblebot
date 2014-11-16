@@ -1,7 +1,8 @@
 package eecs285.Inputs;
 
 import java.util.List;
-import com.tumblr.jumblr.types.*;
+
+import com.tumblr.jumblr.types.Post;
 
 //Handles all acquisition of new Posts
 public class FindPosts

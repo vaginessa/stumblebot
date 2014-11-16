@@ -4,6 +4,7 @@ package eecs285;
 
 import java.awt.Dimension;
 import java.util.List;
+import java.util.Vector;
 
 import javax.swing.WindowConstants;
 
@@ -20,9 +21,9 @@ import eecs285.GUI.TumblrReblogGUI;
  */
 public class App 
 {
-    public static List<String> globalTagsSeeded;
-    public static List<String> globalTags;
-    public static List<Post> globalPosts;
+    public static List<String> globalTagsSeeded = new Vector<String>();
+    public static List<String> globalTagsFound = new Vector<String>();
+    public static List<Post> globalPosts = new Vector<Post>();
     public static List<String> globalReblogTexts;
     public static TumblrReblogGUI win;
     public static Blog ourBlog;
@@ -30,7 +31,6 @@ public class App
     public static void main( String[] args )
     {
       System.out.println( "harhar" );
-
       // Authenticate via OAuth
       client = new JumblrClient(
               "fP4T709QbfTBOaR4mHLNFeE6BgbwxQw10qSypEN9onlWKGwsBn",

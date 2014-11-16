@@ -2,6 +2,7 @@ package eecs285.GUI;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
@@ -24,6 +25,7 @@ import eecs285.GUI.Events.AddTagsEvent;
 import eecs285.GUI.Events.CloseWindowEvent;
 import eecs285.GUI.Events.DeleteTagsEvent;
 import eecs285.GUI.Events.ExitProgramEvent;
+import eecs285.GUI.Events.FetchPostsAction;
 import eecs285.GUI.Events.LoadListOfPostsEvent;
 import eecs285.GUI.Events.LoadListOfTagsEvent;
 import eecs285.GUI.Events.SaveListOfPostsEvent;
@@ -55,7 +57,7 @@ public class TumblrReblogGUI extends JFrame
   private static JPanel postListPanel;
   private static JPanel allLists;
   private static JPanel buttonsRow1;
-  //private static JPanel automatePanel;
+  // private static JPanel automatePanel;
   private static JPanel creditsPanel;
   private static DefaultListModel<String> defaultTagList;
   private static DefaultListModel<String> defaultPostList;
@@ -63,7 +65,7 @@ public class TumblrReblogGUI extends JFrame
   private static JList<String> postList;
   private static JScrollPane tagScrollPane;
   private static JScrollPane postScrollPane;
-  //private static JCheckBox automate;
+  // private static JCheckBox automate;
   private static JButton fetchButton;
   private static JButton runButton;
   private static JButton postButton;
@@ -71,8 +73,7 @@ public class TumblrReblogGUI extends JFrame
   public TumblrReblogGUI()
   {
     super("Tumblr Reblog Bot");
-    setLayout(
-        new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+    setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
     createMenu();
     createUI();
     setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -81,6 +82,7 @@ public class TumblrReblogGUI extends JFrame
     setVisible(true);
 
   }
+
   private void createMenu()
   {
     menuBar = new JMenuBar();
@@ -116,15 +118,16 @@ public class TumblrReblogGUI extends JFrame
 
     setJMenuBar(menuBar);
   }
+
   private void createUI()
   {
     tagListPanel = new JPanel(new FlowLayout());
     postListPanel = new JPanel(new FlowLayout());
     allLists = new JPanel(new FlowLayout());
     buttonsRow1 = new JPanel(new FlowLayout());
-    //automatePanel = new JPanel(new FlowLayout());
+    // automatePanel = new JPanel(new FlowLayout());
     creditsPanel = new JPanel(new FlowLayout());
-    
+
     tagLabel = new JLabel("All Currently Seeded Tags");
     defaultTagList = new DefaultListModel<String>();
     tagList = new JList<String>(defaultTagList);
@@ -132,8 +135,7 @@ public class TumblrReblogGUI extends JFrame
     tagScrollPane = new JScrollPane(tagList);
     tagScrollPane.setPreferredSize(new Dimension(200, 400));
 
-    tagListPanel
-        .setLayout(new BoxLayout(tagListPanel, BoxLayout.Y_AXIS));
+    tagListPanel.setLayout(new BoxLayout(tagListPanel, BoxLayout.Y_AXIS));
     tagListPanel.add(tagLabel);
     tagListPanel.add(tagScrollPane);
     tagListPanel.setBorder(new EmptyBorder(10, 10, 10, 5));
@@ -155,24 +157,27 @@ public class TumblrReblogGUI extends JFrame
     fetchButton = new JButton("Update Posts From Seeded Tags");
     runButton = new JButton("Automatically Post");
     postButton = new JButton("Reblog All Posts");
-    
+
+    fetchButton.addActionListener(new FetchPostsAction());
+
     buttonsRow1.add(fetchButton);
     buttonsRow1.add(runButton);
     buttonsRow1.add(postButton);
-    
-    //automate = new JCheckBox("Automate Posts?", false);
-    credits = new JLabel("Created by J. Ames, D. Brooks, J. Hu, J. Jin, Y. Seetharaman"
-        + " for EECS285 during Fall 2014.",
-        SwingConstants.CENTER);
 
-    //automatePanel.add(automate);
+    // automate = new JCheckBox("Automate Posts?", false);
+    credits = new JLabel(
+        "Created by J. Ames, D. Brooks, J. Hu, J. Jin, Y. Seetharaman"
+            + " for EECS285 during Fall 2014.", SwingConstants.CENTER);
+
+    // automatePanel.add(automate);
     creditsPanel.add(credits);
     add(allLists);
     add(buttonsRow1);
-    //add(automatePanel);
+    // add(automatePanel);
     add(creditsPanel);
   }
-  public static void updateTagList(String[] tagArray)
+
+  public static void updateTagList(List<String> tagArray)
   {
     getTagDefaultListModel().clear();
     for( String tagIter : tagArray )
@@ -182,7 +187,7 @@ public class TumblrReblogGUI extends JFrame
   }
 
   // Updates the JList with all the elements in the vehicle array.
-  public static void updatePostList(Post[] postArray)
+  public static void updatePostList(List<Post> postArray)
   {
     getPostDefaultListModel().clear();
     for( Post postIter : postArray )

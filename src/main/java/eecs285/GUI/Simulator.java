@@ -5,10 +5,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Vector;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -19,49 +18,39 @@ public class Simulator
 {
   public static void addTag(String toAdd)
   {
-    DefaultListModel<String> currentTags = TumblrReblogGUI
-        .getTagDefaultListModel();
-    List<Object> currentTagsArray = Arrays.asList(currentTags.toArray());
-    if( !currentTagsArray.contains(toAdd) )
+    if( !App.globalTagsSeeded.contains(toAdd) )
     {
-      TumblrReblogGUI.getTagDefaultListModel().addElement(toAdd);
+      App.globalTagsSeeded.add(toAdd);
     }
   }
 
   public static void deleteTag(String todelete)
   {
-    DefaultListModel<String> currentTags = TumblrReblogGUI
-        .getTagDefaultListModel();
-    List<Object> currentTagsArray = Arrays.asList(currentTags.toArray());
-    if( currentTagsArray.contains(todelete) )
+    if( App.globalTagsSeeded.contains(todelete) )
     {
-      TumblrReblogGUI.getTagDefaultListModel().removeElement(todelete);
+      App.globalTagsSeeded.remove(todelete);
     }
   }
 
   public static void updateTags()
   {
-    DefaultListModel<String> currentTags = TumblrReblogGUI
-        .getTagDefaultListModel();
-    String[] contents = new String[currentTags.getSize()];
-    for( int iter = 0; iter < currentTags.getSize(); iter++ )
-    {
-      contents[iter] = currentTags.elementAt(iter);
-    }
-    Arrays.sort(contents);
+    java.util.Collections.sort(App.globalTagsSeeded);
     TumblrReblogGUI.saved = false;
     TumblrReblogGUI.getTagDefaultListModel().clear();
-    TumblrReblogGUI.updateTagList(contents);
+    for( String tagIter : App.globalTagsSeeded )
+    {
+      TumblrReblogGUI.getTagDefaultListModel().addElement(tagIter);
+    }
   }
 
   @SuppressWarnings("resource")
-  public static String[] loadTags(File inputFile)
+  public static List<String> loadTags(File inputFile)
   {
     if( inputFile == null )
     {
       return null;
     }
-    ArrayList<String> tagArray = new ArrayList<>();
+    List<String> tagArray = new Vector<String>();
     Scanner in;
     try
     {
@@ -78,7 +67,7 @@ public class Simulator
       event.printStackTrace();
     }
 
-    return tagArray.toArray(new String[tagArray.size()]);
+    return tagArray;
   }
 
   public static void saveTagList(File outputFile) throws IOException
