@@ -177,15 +177,6 @@ public class TumblrReblogGUI extends JFrame
     add(creditsPanel);
   }
 
-  public static void updateTagList(List<String> tagArray)
-  {
-    getTagDefaultListModel().clear();
-    for( String tagIter : tagArray )
-    {
-      getTagDefaultListModel().addElement(tagIter);
-    }
-  }
-
   // Updates the JList with all the elements in the vehicle array.
   public static void updatePostList(List<Post> postArray)
   {
