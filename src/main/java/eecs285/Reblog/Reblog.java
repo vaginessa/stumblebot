@@ -13,6 +13,8 @@ public class Reblog
     List<Post> postsToReblog = Filter.postsToReblog(App.globalPosts);
     for(Post post : postsToReblog)
     {
+      post.setTags(Filter.tagsFromPost(post));
+      post.reblog(Filter.titleForPost(post));
     }
   }
 }

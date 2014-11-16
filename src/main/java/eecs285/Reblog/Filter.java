@@ -15,11 +15,11 @@ public class Filter
   
   static List<String> tagsFromPost(Post inPost)
   {
-    return null;
+    return inPost.getTags();
   }
   
   static String titleForPost(Post inPost)
   {
-    return null;
+    return inPost.getBlogName() + " Repost";
   }
 }
