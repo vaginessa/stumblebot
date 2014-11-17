@@ -28,6 +28,7 @@ import eecs285.GUI.Events.DeleteTagsEvent;
 import eecs285.GUI.Events.ExitProgramEvent;
 import eecs285.GUI.Events.FetchPostsAction;
 import eecs285.GUI.Events.FilterPostsAction;
+import eecs285.GUI.Events.GetTimeAction;
 import eecs285.GUI.Events.LoadListOfPostsEvent;
 import eecs285.GUI.Events.LoadListOfTagsEvent;
 import eecs285.GUI.Events.PostButtonAction;
@@ -84,6 +85,7 @@ public class TumblrReblogGUI extends JFrame
   private static JButton postButton;
   private static JButton startButton;
   private static JButton stopButton;
+  private static JButton getTimeButton;
 
   public TumblrReblogGUI()
   {
@@ -200,15 +202,19 @@ public class TumblrReblogGUI extends JFrame
     automationText = new JLabel("Automation Options:");
     automationTextPanel.add(automationText);
 
-    startButton = new JButton("Automatically Post");
+    startButton = new JButton("Start Automation");
     stopButton = new JButton("Stop Automation");
+    getTimeButton = new JButton("Get Automation Time");
     stopButton.setEnabled(false);
+    getTimeButton.setEnabled(false);
 
     startButton.addActionListener(new StartButtonAction());
     stopButton.addActionListener(new StopButtonAction());
+    getTimeButton.addActionListener(new GetTimeAction());
 
     automatePanel.add(startButton);
     automatePanel.add(stopButton);
+    automatePanel.add(getTimeButton);
 
 
     // DEBUG OPTIONS
@@ -270,9 +276,24 @@ public class TumblrReblogGUI extends JFrame
     add(creditsPanel);
   }
 
+  public static JButton getFetchButton()
+  {
+    return fetchButton;
+  }
+
+  public static JButton getFilterButton()
+  {
+    return filterButton;
+  }
+
   public static JButton getRestoreButton()
   {
     return restoreButton;
+  }
+
+  public static JButton getPostButton()
+  {
+    return postButton;
   }
 
   public static JButton getStartButton()
@@ -283,6 +304,10 @@ public class TumblrReblogGUI extends JFrame
   public static JButton getStopButton()
   {
     return stopButton;
+  }
+  public static JButton getTimeButton()
+  {
+    return getTimeButton;
   }
 
   public static JList<String> getTagJList()
