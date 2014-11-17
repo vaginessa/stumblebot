@@ -2,6 +2,8 @@ package eecs285.GUI;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
@@ -18,6 +20,7 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import eecs285.App;
 import eecs285.GUI.Events.AddPostFromURLEvent;
 import eecs285.GUI.Events.AddTagsEvent;
 import eecs285.GUI.Events.CloseWindowEvent;
@@ -26,6 +29,7 @@ import eecs285.GUI.Events.ExitProgramEvent;
 import eecs285.GUI.Events.FetchPostsAction;
 import eecs285.GUI.Events.LoadListOfPostsEvent;
 import eecs285.GUI.Events.LoadListOfTagsEvent;
+import eecs285.GUI.Events.PostButtonActionListener;
 import eecs285.GUI.Events.SaveListOfPostsEvent;
 import eecs285.GUI.Events.SaveListOfTagsEvent;
 import eecs285.GUI.Events.SelectPostDetail;
@@ -173,7 +177,46 @@ public class TumblrReblogGUI extends JFrame
     postButton = new JButton("Reblog All Posts");
 
     fetchButton.addActionListener(new FetchPostsAction());
-
+    postButton.addActionListener(new PostButtonActionListener());
+    
+    //DEBUG OPTIONS
+    JPanel debugOptions = new JPanel(new FlowLayout());
+    JLabel debugText = new JLabel("Row of debuggin buttons");
+    JButton allTypes = new JButton("Create Every Type of Post");
+    allTypes.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        Simulator.addTag("answer");
+        Simulator.addTag("audio");
+        Simulator.addTag("chat");
+        Simulator.addTag("link");
+        Simulator.addTag("photo");
+        Simulator.addTag("quote");
+        Simulator.addTag("text");
+        Simulator.addTag("video");
+        Simulator.updateTags();
+      }
+    });
+    JButton clearTags = new JButton("Clear ALL Tags");
+    clearTags.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        App.globalTagsSeeded.clear();
+        Simulator.updateTags();
+      }
+    });
+    JButton clearPosts = new JButton("Clear ALL Posts");
+    clearPosts.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        App.globalPosts.clear();
+        Simulator.updatePosts();
+      }
+    });
+    debugOptions.add(debugText);
+    debugOptions.add(allTypes);
+    debugOptions.add(clearTags);
+    debugOptions.add(clearPosts);
+    add(debugOptions);
+    
+    
     buttonsRow1.add(fetchButton);
     buttonsRow1.add(runButton);
     buttonsRow1.add(postButton);

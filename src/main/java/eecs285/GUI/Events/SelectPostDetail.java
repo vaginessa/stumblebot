@@ -43,8 +43,6 @@ public class SelectPostDetail extends MouseAdapter
   private static JLabel question;
   private static JLabel answer;
   private static JLabel trackName;
-  private static JLabel albumName;
-  private static JLabel artistName;
   private static JLabel chatTitle;
   private static JLabel chatBody;
   private static JLabel linkTitle;
@@ -52,7 +50,6 @@ public class SelectPostDetail extends MouseAdapter
   private static JLabel pictureCaption;
   private static JLabel quoteText;
   private static JLabel quoteSource;
-  private static JLabel textTitle;
   private static JLabel textBody;
   private static JLabel videoCaption;
   private static JLabel getTimePosted;
@@ -63,8 +60,6 @@ public class SelectPostDetail extends MouseAdapter
   private static JLabel getQuestion;
   private static JLabel getAnswer;
   private static JLabel getTrackName;
-  private static JLabel getAlbumName;
-  private static JLabel getArtistName;
   private static JLabel getChatTitle;
   private static JLabel getChatBody;
   private static JLabel getLinkTitle;
@@ -72,7 +67,6 @@ public class SelectPostDetail extends MouseAdapter
   private static JLabel getPictureCaption;
   private static JLabel getQuoteText;
   private static JLabel getQuoteSource;
-  private static JLabel getTextTitle;
   private static JLabel getTextBody;
   private static JLabel getVideoCaption;
   private static JButton deleteButton;
@@ -97,8 +91,6 @@ public class SelectPostDetail extends MouseAdapter
       question = new JLabel("Question: ");
       answer = new JLabel("Answer: ");
       trackName = new JLabel("Track Name: ");
-      albumName = new JLabel("Album Name: ");
-      artistName = new JLabel("Artist Name: ");
       chatTitle = new JLabel("Chat Title: ");
       chatBody = new JLabel("Chat Body: ");
       linkTitle = new JLabel("Link Title: ");
@@ -106,7 +98,6 @@ public class SelectPostDetail extends MouseAdapter
       pictureCaption = new JLabel("Picture Caption: ");
       quoteText = new JLabel("Quote Text: ");
       quoteSource = new JLabel("Quote Source: ");
-      textTitle = new JLabel("Text Title: ");
       textBody = new JLabel("Text Body: ");
       videoCaption = new JLabel("Video Caption: ");
       
@@ -181,11 +172,7 @@ public class SelectPostDetail extends MouseAdapter
       else if( toView.getType().equals("audio") )
       {
         leftPanel.add(trackName);
-        leftPanel.add(albumName);
-        leftPanel.add(artistName);
         String trackNameString;
-        String albumNameString;
-        String artistNameString;
         if(((AudioPost) toView).getTrackName().length() > 60)
         {
           trackNameString = ((AudioPost) toView).getTrackName().substring(0, 60) + "...";
@@ -194,28 +181,8 @@ public class SelectPostDetail extends MouseAdapter
         {
           trackNameString = ((AudioPost) toView).getTrackName();
         }
-        if(((AudioPost) toView).getAlbumName().length() > 60)
-        {
-          albumNameString = ((AudioPost) toView).getAlbumName().substring(0, 60) + "...";
-        }
-        else
-        {
-          albumNameString = ((AudioPost) toView).getAlbumName();
-        }
-        if(((AudioPost) toView).getArtistName().length() > 60)
-        {
-          artistNameString = ((AudioPost) toView).getArtistName().substring(0, 60) + "...";
-        }
-        else
-        {
-          artistNameString = ((AudioPost) toView).getArtistName();
-        }
         getTrackName = new JLabel(trackNameString + "\0");
-        getAlbumName = new JLabel(albumNameString + "\0");
-        getArtistName = new JLabel(artistNameString + "\0");
         rightPanel.add(getTrackName);
-        rightPanel.add(getAlbumName);
-        rightPanel.add(getArtistName);
       }
       else if( toView.getType().equals("chat") )
       {
@@ -315,18 +282,8 @@ public class SelectPostDetail extends MouseAdapter
       }
       else if( toView.getType().equals("text") )
       {
-        leftPanel.add(textTitle);
         leftPanel.add(textBody);
-        String textTitleString;
         String textBodyString;
-        if(((TextPost) toView).getTitle().length() > 60)
-        {
-          textTitleString = ((TextPost) toView).getTitle().substring(0, 60) + "...";
-        }
-        else
-        {
-          textTitleString = ((TextPost) toView).getTitle();
-        }
         if(((TextPost) toView).getBody().length() > 60)
         {
           textBodyString = ((TextPost) toView).getBody().substring(0, 60) + "...";
@@ -335,9 +292,7 @@ public class SelectPostDetail extends MouseAdapter
         {
           textBodyString = ((TextPost) toView).getBody();
         }
-        getTextTitle = new JLabel(textTitleString + "\0");
         getTextBody = new JLabel(textBodyString + "\0");
-        rightPanel.add(getTextTitle);
         rightPanel.add(getTextBody);
       }
       else if( toView.getType().equals("video") )

@@ -101,8 +101,8 @@ public class Simulator
       for( Post postIter : App.globalPosts )
       {
         TumblrReblogGUI.getPostDefaultListModel().addElement(
-            String.format("Blog Name: %s Post ID: %d Tags: %s",
-                postIter.getBlogName(), postIter.getId(), postIter.getTags()));
+            String.format("Blog Name: %s Post ID: %d Post Type: %s",
+                postIter.getBlogName(), postIter.getId(), postIter.getType()));
 
       }
     }
@@ -114,9 +114,9 @@ public class Simulator
         {
           TumblrReblogGUI.getPostDefaultListModel()
               .addElement(
-                  String.format("Blog Name: %s Post ID: %d Tags: %s",
+                  String.format("Blog Name: %s Post ID: %d Post Type: %s",
                       postIter.getBlogName(), postIter.getId(),
-                      postIter.getTags()));
+                      postIter.getType()));
 
         }
       }
