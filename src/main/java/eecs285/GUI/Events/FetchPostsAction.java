@@ -21,6 +21,7 @@ public class FetchPostsAction implements ActionListener
     {
       System.out.println(test.toString());
       System.out.println(test.getPostUrl());
+      App.globalPosts.clear();
       for( Post stringIterCurrent : retrievedPosts )
       {
         if( !App.globalPosts.contains(stringIterCurrent) )
