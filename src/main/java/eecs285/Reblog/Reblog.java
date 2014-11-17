@@ -14,7 +14,7 @@ public class Reblog
     for(Post post : postsToReblog)
     {
       post.setTags(Filter.tagsFromPost(post));
-      post.reblog(Filter.titleForPost(post));
+      post.reblog(App.ourBlog.getTitle());
     }
   }
 }
