@@ -69,6 +69,7 @@ public class SelectPostDetail extends MouseAdapter
   private static JLabel getQuoteSource;
   private static JLabel getTextBody;
   private static JLabel getVideoCaption;
+  private static OpenURLButton openButton;
   private static JButton deleteButton;
   private static CloseButton nothingButton;
   private static String selected;
@@ -310,6 +311,7 @@ public class SelectPostDetail extends MouseAdapter
         getVideoCaption = new JLabel(videoCaptionString + "\0");
         rightPanel.add(getVideoCaption);
       }
+      openButton = new OpenURLButton(toView);
       deleteButton = new JButton("Delete");
       deleteButton.addActionListener(new SelectPostDetailActionListener());
       nothingButton = new CloseButton("Nothing");
@@ -318,6 +320,7 @@ public class SelectPostDetail extends MouseAdapter
       northPanel.add(rightPanel);
       centerPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
       centerPanel.add(confirm);
+      southPanel.add(openButton);
       southPanel.add(deleteButton);
       southPanel.add(nothingButton);
 

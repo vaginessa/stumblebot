@@ -38,6 +38,8 @@ import eecs285.GUI.Events.SelectPostDetail;
 import eecs285.GUI.Events.SelectTagDetail;
 import eecs285.GUI.Events.ShowSelectedPostsAction;
 import eecs285.GUI.Events.ShowSelectedTagsAction;
+import eecs285.GUI.Events.StartButtonAction;
+import eecs285.GUI.Events.StopButtonAction;
 
 public class TumblrReblogGUI extends JFrame
 {
@@ -80,7 +82,7 @@ public class TumblrReblogGUI extends JFrame
   private static JButton filterButton;
   private static JButton restoreButton;
   private static JButton postButton;
-  private static JButton runButton;
+  private static JButton startButton;
   private static JButton stopButton;
 
   public TumblrReblogGUI()
@@ -199,11 +201,16 @@ public class TumblrReblogGUI extends JFrame
     automationText = new JLabel("Automation Options:");
     automationTextPanel.add(automationText);
     
-    runButton = new JButton("Automatically Post");
+    startButton = new JButton("Automatically Post");
     stopButton = new JButton("Stop Automation");
-    
-    automatePanel.add(runButton);
+    stopButton.setEnabled(false);
+
+    startButton.addActionListener(new StartButtonAction());
+    stopButton.addActionListener(new StopButtonAction());
+
+    automatePanel.add(startButton);
     automatePanel.add(stopButton);
+    
     
     //DEBUG OPTIONS
     JPanel debugOptions = new JPanel(new FlowLayout());
@@ -261,6 +268,16 @@ public class TumblrReblogGUI extends JFrame
   public static JButton getRestoreButton()
   {
     return restoreButton;
+  }
+
+  public static JButton getStartButton()
+  {
+    return startButton;
+  }
+
+  public static JButton getStopButton()
+  {
+    return stopButton;
   }
 
   public static JList<String> getTagJList()

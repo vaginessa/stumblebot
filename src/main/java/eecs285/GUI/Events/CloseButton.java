@@ -10,7 +10,6 @@ import javax.swing.SwingUtilities;
 public class CloseButton extends JButton implements ActionListener
 {
   private static final long serialVersionUID = 1L;
-  JButton button;
 
   public CloseButton(String buttonName)
   {
