@@ -181,7 +181,7 @@ public class TumblrReblogGUI extends JFrame
     
     //DEBUG OPTIONS
     JPanel debugOptions = new JPanel(new FlowLayout());
-    JLabel debugText = new JLabel("Row of debuggin buttons");
+    JLabel debugText = new JLabel("Row of debugging buttons");
     JButton allTypes = new JButton("Create Every Type of Post");
     allTypes.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
