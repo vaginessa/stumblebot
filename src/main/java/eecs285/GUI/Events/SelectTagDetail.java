@@ -54,6 +54,7 @@ public class SelectTagDetail extends MouseAdapter
       frameDialog.setModal(true);
       frameDialog.setResizable(false);
       frameDialog.pack();
+      frameDialog.setLocationRelativeTo(App.win);
       frameDialog.setVisible(true);
     }
   }

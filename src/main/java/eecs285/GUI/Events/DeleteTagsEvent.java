@@ -54,6 +54,7 @@ public class DeleteTagsEvent implements ActionListener
     frameDialog.setResizable(false);
     frameDialog.setModal(true);
     frameDialog.pack();
+    frameDialog.setLocationRelativeTo(App.win);
     frameDialog.setVisible(true);
   }
 

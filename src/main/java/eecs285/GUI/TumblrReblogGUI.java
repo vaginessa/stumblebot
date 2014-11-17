@@ -95,7 +95,6 @@ public class TumblrReblogGUI extends JFrame
     addWindowListener(new CloseWindowEvent());
     setResizable(false);
     setVisible(true);
-
   }
 
   private void createMenu()

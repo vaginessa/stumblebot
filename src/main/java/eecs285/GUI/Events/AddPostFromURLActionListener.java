@@ -5,11 +5,8 @@ import java.awt.event.ActionListener;
 
 public class AddPostFromURLActionListener implements ActionListener
 {
-
-  public void actionPerformed(ActionEvent e)
+  public void actionPerformed(ActionEvent event)
   {
     AddPostFromURLEvent.getFrameDialog().dispose();
-    
   }
-
 }
