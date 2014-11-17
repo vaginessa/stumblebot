@@ -20,7 +20,8 @@ public class DeleteTagsActionListener implements ActionListener
       String[] userInputParse = userInput.split(",");
       for(String stringIter : userInputParse)
       {
-        Simulator.deleteTag(stringIter);
+        Simulator.deleteTagSeeded(stringIter);
+        Simulator.deleteTagFound(stringIter);
       }
       Simulator.updateTags();
       DeleteTagsEvent.getFrameDialog().dispose();

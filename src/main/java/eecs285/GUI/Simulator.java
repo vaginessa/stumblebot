@@ -26,7 +26,7 @@ public class Simulator
     }
   }
 
-  public static void deleteTag(String toDelete)
+  public static void deleteTagSeeded(String toDelete)
   {
     if( App.globalTagsSeeded.contains(toDelete) )
     {
@@ -34,14 +34,43 @@ public class Simulator
     }
   }
 
+  public static void deleteTagFound(String toDelete)
+  {
+    if( App.globalTagsFound.contains(toDelete) )
+    {
+      App.globalTagsFound.remove(toDelete);
+    }
+  }
+
+
   public static void updateTags()
   {
     java.util.Collections.sort(App.globalTagsSeeded);
     TumblrReblogGUI.saved = false;
     TumblrReblogGUI.getTagDefaultListModel().clear();
+    TumblrReblogGUI.getPostsCombo().removeAllItems();
+    TumblrReblogGUI.getPostsCombo().addItem("All Posts");
+    addGlobalTagsSeeded();
+  }
+
+  public static void addGlobalTagsSeeded()
+  {
     for( String tagIter : App.globalTagsSeeded )
     {
+      if( TumblrReblogGUI.getTagsCombo().getSelectedItem() == "Show Seeded Tags" )
+      {
+        TumblrReblogGUI.getTagDefaultListModel().addElement(tagIter);
+      }
+      TumblrReblogGUI.getPostsCombo().addItem(tagIter);
+    }
+  }
+
+  public static void addGlobalTagsFound()
+  {
+    for( String tagIter : App.globalTagsFound )
+    {
       TumblrReblogGUI.getTagDefaultListModel().addElement(tagIter);
+      TumblrReblogGUI.getPostsCombo().addItem(tagIter);
     }
   }
 
@@ -49,10 +78,10 @@ public class Simulator
   {
     long postID = Long.parseLong(toDeleteID);
     System.out.println(postID);
-    for(Post postIter : App.globalPosts)
+    for( Post postIter : App.globalPosts )
     {
       System.out.println(postIter.getId());
-      if(postIter.getId().equals(postID))
+      if( postIter.getId().equals(postID) )
       {
         App.globalPosts.remove(postIter);
         break;
@@ -65,11 +94,32 @@ public class Simulator
     java.util.Collections.sort(App.globalTagsSeeded);
     TumblrReblogGUI.saved = false;
     TumblrReblogGUI.getPostDefaultListModel().clear();
-    for( Post postIter : App.globalPosts )
+    String selectedOption = (String) TumblrReblogGUI.getPostsCombo()
+        .getSelectedItem();
+    if( selectedOption == "All Posts" )
     {
-      TumblrReblogGUI.getPostDefaultListModel().addElement(
-          String.format("Blog Name: %s Post ID: %d Tags: %s",
-              postIter.getBlogName(), postIter.getId(), postIter.getTags()));
+      for( Post postIter : App.globalPosts )
+      {
+        TumblrReblogGUI.getPostDefaultListModel().addElement(
+            String.format("Blog Name: %s Post ID: %d Tags: %s",
+                postIter.getBlogName(), postIter.getId(), postIter.getTags()));
+
+      }
+    }
+    else
+    {
+      for( Post postIter : App.globalPosts )
+      {
+        if( postIter.getTags().contains(selectedOption) )
+        {
+          TumblrReblogGUI.getPostDefaultListModel()
+              .addElement(
+                  String.format("Blog Name: %s Post ID: %d Tags: %s",
+                      postIter.getBlogName(), postIter.getId(),
+                      postIter.getTags()));
+
+        }
+      }
     }
   }
 

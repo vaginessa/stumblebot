@@ -18,7 +18,8 @@ public class SelectTagDetailActionListener implements ActionListener
     {
       String userInput = SelectTagDetail.getSelected();
       System.out.println(userInput);
-      Simulator.deleteTag(userInput);
+      Simulator.deleteTagSeeded(userInput);
+      Simulator.deleteTagFound(userInput);
       Simulator.updateTags();
       SelectTagDetail.getFrameDialog().dispose();
     }

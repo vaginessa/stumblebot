@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -29,6 +30,8 @@ import eecs285.GUI.Events.SaveListOfPostsEvent;
 import eecs285.GUI.Events.SaveListOfTagsEvent;
 import eecs285.GUI.Events.SelectPostDetail;
 import eecs285.GUI.Events.SelectTagDetail;
+import eecs285.GUI.Events.ShowSelectedPostsAction;
+import eecs285.GUI.Events.ShowSelectedTagsAction;
 
 public class TumblrReblogGUI extends JFrame
 {
@@ -56,6 +59,8 @@ public class TumblrReblogGUI extends JFrame
   private static JPanel buttonsRow1;
   // private static JPanel automatePanel;
   private static JPanel creditsPanel;
+  private static JComboBox<String> tagsCombo;
+  private static JComboBox<String> postsCombo;
   private static DefaultListModel<String> defaultTagList;
   private static DefaultListModel<String> defaultPostList;
   private static JList<String> tagList;
@@ -124,8 +129,17 @@ public class TumblrReblogGUI extends JFrame
     buttonsRow1 = new JPanel(new FlowLayout());
     // automatePanel = new JPanel(new FlowLayout());
     creditsPanel = new JPanel(new FlowLayout());
+    tagsCombo = new JComboBox<String>();
+    postsCombo = new JComboBox<String>();
+
+    tagsCombo.addItem("Show Seeded Tags");
+    tagsCombo.addItem("Show Found Tags");
+    tagsCombo.addActionListener(new ShowSelectedTagsAction());
+    postsCombo.addItem("All Posts");
+    postsCombo.addActionListener(new ShowSelectedPostsAction());
 
     tagLabel = new JLabel("All Currently Seeded Tags");
+    tagLabel.setBorder(new EmptyBorder(10, 5, 5, 5));
     defaultTagList = new DefaultListModel<String>();
     tagList = new JList<String>(defaultTagList);
     tagList.addMouseListener(new SelectTagDetail());
@@ -133,11 +147,13 @@ public class TumblrReblogGUI extends JFrame
     tagScrollPane.setPreferredSize(new Dimension(200, 400));
 
     tagListPanel.setLayout(new BoxLayout(tagListPanel, BoxLayout.Y_AXIS));
+    tagListPanel.add(tagsCombo);
     tagListPanel.add(tagLabel);
     tagListPanel.add(tagScrollPane);
     tagListPanel.setBorder(new EmptyBorder(10, 10, 10, 5));
 
     postLabel = new JLabel("All Currently Listed Posts");
+    postLabel.setBorder(new EmptyBorder(10, 5, 5, 5));
     defaultPostList = new DefaultListModel<String>();
     postList = new JList<String>(defaultPostList);
     postList.addMouseListener(new SelectPostDetail());
@@ -145,6 +161,7 @@ public class TumblrReblogGUI extends JFrame
     postScrollPane.setPreferredSize(new Dimension(500, 400));
 
     postListPanel.setLayout(new BoxLayout(postListPanel, BoxLayout.Y_AXIS));
+    postListPanel.add(postsCombo);
     postListPanel.add(postLabel);
     postListPanel.add(postScrollPane);
     postListPanel.setBorder(new EmptyBorder(10, 5, 10, 10));
@@ -182,6 +199,16 @@ public class TumblrReblogGUI extends JFrame
   public static JList<String> getPostJList()
   {
     return postList;
+  }
+
+  public static JComboBox<String> getTagsCombo()
+  {
+    return tagsCombo;
+  }
+
+  public static JComboBox<String> getPostsCombo()
+  {
+    return postsCombo;
   }
 
   public static DefaultListModel<String> getTagDefaultListModel()
