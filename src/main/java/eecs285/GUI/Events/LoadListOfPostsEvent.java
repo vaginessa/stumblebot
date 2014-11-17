@@ -5,11 +5,8 @@ import java.awt.event.ActionListener;
 
 public class LoadListOfPostsEvent implements ActionListener
 {
-
   public void actionPerformed(ActionEvent event)
   {
     // TODO Auto-generated method stub
-    
   }
-
 }

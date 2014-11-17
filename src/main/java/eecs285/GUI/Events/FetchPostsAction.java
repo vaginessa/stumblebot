@@ -17,13 +17,13 @@ public class FetchPostsAction implements ActionListener
   public void actionPerformed(ActionEvent actionEvent)
   {
     List<Post> retrievedPosts = FindPosts.findFrom(App.globalTagsSeeded);
-    for(Post test : retrievedPosts)
+    for( Post test : retrievedPosts )
     {
       System.out.println(test.toString());
       System.out.println(test.getPostUrl());
-      for(Post stringIterCurrent : retrievedPosts)
+      for( Post stringIterCurrent : retrievedPosts )
       {
-        if(!App.globalPosts.contains(stringIterCurrent))
+        if( !App.globalPosts.contains(stringIterCurrent) )
         {
           ((Vector<Post>) App.globalPosts).addElement(stringIterCurrent);
         }

@@ -196,10 +196,10 @@ public class TumblrReblogGUI extends JFrame
     buttonsRow1.add(filterButton);
     buttonsRow1.add(restoreButton);
     buttonsRow1.add(postButton);
-    
+
     automationText = new JLabel("Automation Options:");
     automationTextPanel.add(automationText);
-    
+
     startButton = new JButton("Automatically Post");
     stopButton = new JButton("Stop Automation");
     stopButton.setEnabled(false);
@@ -209,14 +209,16 @@ public class TumblrReblogGUI extends JFrame
 
     automatePanel.add(startButton);
     automatePanel.add(stopButton);
-    
-    
-    //DEBUG OPTIONS
+
+
+    // DEBUG OPTIONS
     JPanel debugOptions = new JPanel(new FlowLayout());
     JLabel debugText = new JLabel("Row of debugging buttons: ");
     JButton allTypes = new JButton("Create Every Type of Post");
-    allTypes.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
+    allTypes.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
+      {
         Simulator.addTag("answer");
         Simulator.addTag("audio");
         Simulator.addTag("chat");
@@ -229,15 +231,19 @@ public class TumblrReblogGUI extends JFrame
       }
     });
     JButton clearTags = new JButton("Clear ALL Tags");
-    clearTags.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
+    clearTags.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
+      {
         App.globalTagsSeeded.clear();
         Simulator.updateTags();
       }
     });
     JButton clearPosts = new JButton("Clear ALL Posts");
-    clearPosts.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
+    clearPosts.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent e)
+      {
         App.globalPosts.clear();
         Simulator.updatePosts();
       }
@@ -247,8 +253,8 @@ public class TumblrReblogGUI extends JFrame
     debugOptions.add(clearTags);
     debugOptions.add(clearPosts);
     add(debugOptions);
-    
-    //End of debug options
+
+    // End of debug options
 
     // automate = new JCheckBox("Automate Posts?", false);
     credits = new JLabel(

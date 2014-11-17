@@ -98,7 +98,7 @@ public class SelectPostDetail extends MouseAdapter
       quoteSource = new JLabel("Quote Source: ");
       textBody = new JLabel("Text Body: ");
       videoCaption = new JLabel("Video Caption: ");
-      
+
       int location = TumblrReblogGUI.getPostJList().locationToIndex(
           event.getPoint());
       selected = TumblrReblogGUI.getPostJList().getModel()
@@ -136,25 +136,29 @@ public class SelectPostDetail extends MouseAdapter
         String askerNameString;
         String questionString;
         String answerString;
-        if(((AnswerPost) toView).getAskingName().length() > 60)
+        if( ((AnswerPost) toView).getAskingName().length() > 60 )
         {
-          askerNameString = ((AnswerPost) toView).getAskingName().substring(0, 60) + "...";
+          askerNameString = ((AnswerPost) toView).getAskingName().substring(0,
+              60)
+              + "...";
         }
         else
         {
           askerNameString = ((AnswerPost) toView).getAskingName();
         }
-        if(((AnswerPost) toView).getQuestion().length() > 60)
+        if( ((AnswerPost) toView).getQuestion().length() > 60 )
         {
-          questionString = ((AnswerPost) toView).getQuestion().substring(0, 60) + "...";
+          questionString = ((AnswerPost) toView).getQuestion().substring(0, 60)
+              + "...";
         }
         else
         {
           questionString = ((AnswerPost) toView).getQuestion();
         }
-        if(((AnswerPost) toView).getAnswer().length() > 60)
+        if( ((AnswerPost) toView).getAnswer().length() > 60 )
         {
-          answerString = ((AnswerPost) toView).getAnswer().substring(0, 60) + "...";
+          answerString = ((AnswerPost) toView).getAnswer().substring(0, 60)
+              + "...";
         }
         else
         {
@@ -171,9 +175,10 @@ public class SelectPostDetail extends MouseAdapter
       {
         leftPanel.add(trackName);
         String trackNameString;
-        if(((AudioPost) toView).getTrackName().length() > 60)
+        if( ((AudioPost) toView).getTrackName().length() > 60 )
         {
-          trackNameString = ((AudioPost) toView).getTrackName().substring(0, 60) + "...";
+          trackNameString = ((AudioPost) toView).getTrackName()
+              .substring(0, 60) + "...";
         }
         else
         {
@@ -186,9 +191,10 @@ public class SelectPostDetail extends MouseAdapter
       {
         leftPanel.add(chatBody);
         String chatBodyString;
-        if(((ChatPost) toView).getBody().length() > 60)
+        if( ((ChatPost) toView).getBody().length() > 60 )
         {
-          chatBodyString = ((ChatPost) toView).getBody().substring(0, 60) + "...";
+          chatBodyString = ((ChatPost) toView).getBody().substring(0, 60)
+              + "...";
         }
         else
         {
@@ -203,17 +209,19 @@ public class SelectPostDetail extends MouseAdapter
         leftPanel.add(linkDescription);
         String linkTitleString;
         String linkDescriptionString;
-        if(((LinkPost) toView).getTitle().length() > 60)
+        if( ((LinkPost) toView).getTitle().length() > 60 )
         {
-          linkTitleString = ((LinkPost) toView).getTitle().substring(0, 60) + "...";
+          linkTitleString = ((LinkPost) toView).getTitle().substring(0, 60)
+              + "...";
         }
         else
         {
           linkTitleString = ((LinkPost) toView).getTitle();
         }
-        if(((LinkPost) toView).getDescription().length() > 60)
+        if( ((LinkPost) toView).getDescription().length() > 60 )
         {
-          linkDescriptionString = ((LinkPost) toView).getDescription().substring(0, 60) + "...";
+          linkDescriptionString = ((LinkPost) toView).getDescription()
+              .substring(0, 60) + "...";
         }
         else
         {
@@ -228,9 +236,11 @@ public class SelectPostDetail extends MouseAdapter
       {
         leftPanel.add(pictureCaption);
         String pictureCaptionString;
-        if(((PhotoPost) toView).getCaption().length() > 60)
+        if( ((PhotoPost) toView).getCaption().length() > 60 )
         {
-          pictureCaptionString = ((PhotoPost) toView).getCaption().substring(0, 60) + "...";
+          pictureCaptionString = ((PhotoPost) toView).getCaption().substring(0,
+              60)
+              + "...";
         }
         else
         {
@@ -245,17 +255,19 @@ public class SelectPostDetail extends MouseAdapter
         leftPanel.add(quoteSource);
         String quoteTextString;
         String quoteSourceString;
-        if(((QuotePost) toView).getText().length() > 60)
+        if( ((QuotePost) toView).getText().length() > 60 )
         {
-          quoteTextString = ((QuotePost) toView).getText().substring(0, 60) + "...";
+          quoteTextString = ((QuotePost) toView).getText().substring(0, 60)
+              + "...";
         }
         else
         {
           quoteTextString = ((QuotePost) toView).getText();
         }
-        if(((QuotePost) toView).getSource().length() > 60)
+        if( ((QuotePost) toView).getSource().length() > 60 )
         {
-          quoteSourceString = ((QuotePost) toView).getSource().substring(0, 60) + "...";
+          quoteSourceString = ((QuotePost) toView).getSource().substring(0, 60)
+              + "...";
         }
         else
         {
@@ -270,9 +282,10 @@ public class SelectPostDetail extends MouseAdapter
       {
         leftPanel.add(textBody);
         String textBodyString;
-        if(((TextPost) toView).getBody().length() > 60)
+        if( ((TextPost) toView).getBody().length() > 60 )
         {
-          textBodyString = ((TextPost) toView).getBody().substring(0, 60) + "...";
+          textBodyString = ((TextPost) toView).getBody().substring(0, 60)
+              + "...";
         }
         else
         {
@@ -285,9 +298,11 @@ public class SelectPostDetail extends MouseAdapter
       {
         leftPanel.add(videoCaption);
         String videoCaptionString;
-        if(((VideoPost) toView).getCaption().length() > 60)
+        if( ((VideoPost) toView).getCaption().length() > 60 )
         {
-          videoCaptionString = ((VideoPost) toView).getCaption().substring(0, 60) + "...";
+          videoCaptionString = ((VideoPost) toView).getCaption().substring(0,
+              60)
+              + "...";
         }
         else
         {

@@ -14,14 +14,14 @@ public class ExitProgramEvent implements ActionListener
 {
   public void actionPerformed(ActionEvent event)
   {
-    if(TumblrReblogGUI.saved)
+    if( TumblrReblogGUI.saved )
     {
       System.exit(0);
     }
     else
     {
       if( JOptionPane.showConfirmDialog(App.win,
-          "Are you sure that you want to exit the program without saving?", 
+          "Are you sure that you want to exit the program without saving?",
           "Confirmation", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION )
       {
         App.win.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

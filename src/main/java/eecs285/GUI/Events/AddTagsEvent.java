@@ -24,6 +24,7 @@ public class AddTagsEvent implements ActionListener
   private static JTextField tagsText;
   private static JButton okButton;
   private static CloseButton cancelButton;
+
   public void actionPerformed(ActionEvent event)
   {
     frameDialog = new JDialog(App.win, "Adding these tag(s)");
@@ -32,9 +33,8 @@ public class AddTagsEvent implements ActionListener
     centerPanel = new JPanel(new FlowLayout());
     southPanel = new JPanel(new FlowLayout());
 
-    tagsLabel = new JLabel(
-        "Please enter the tag(s) you wish you wish to add," +
-        " seperated by a comma. Spaces will be ignored!",
+    tagsLabel = new JLabel("Please enter the tag(s) you wish you wish to add,"
+        + " seperated by a comma. Spaces will be ignored!",
         SwingConstants.CENTER);
     tagsText = new JTextField(40);
     okButton = new JButton("OK");
@@ -45,7 +45,7 @@ public class AddTagsEvent implements ActionListener
     centerPanel.add(tagsText);
     southPanel.add(okButton);
     southPanel.add(cancelButton);
-    
+
     frameDialog.getContentPane().setLayout(
         new BoxLayout(frameDialog.getContentPane(), BoxLayout.Y_AXIS));
     frameDialog.add(northPanel);

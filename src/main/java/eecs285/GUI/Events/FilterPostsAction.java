@@ -14,11 +14,12 @@ import eecs285.GUI.TumblrReblogGUI;
 public class FilterPostsAction implements ActionListener
 {
   private static List<Post> filteredPosts = new Vector<Post>();
+
   public void actionPerformed(ActionEvent actionEvent)
   {
     TumblrReblogGUI.getRestoreButton().setEnabled(true);
     App.globalPostsPreFilter = App.globalPosts;
-    //TODO Call reblog function here
+    // TODO Call reblog function here
     App.globalPosts = filteredPosts;
     Simulator.updatePosts();
   }

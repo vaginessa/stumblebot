@@ -15,10 +15,10 @@ public class DeleteTagsActionListener implements ActionListener
         "Are you sure you want to delete these tag(s)?", "Confirmation",
         JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION )
     {
-      String userInput = DeleteTagsEvent.getText().replaceAll("\\s+","");
+      String userInput = DeleteTagsEvent.getText().replaceAll("\\s+", "");
       System.out.println(userInput);
       String[] userInputParse = userInput.split(",");
-      for(String stringIter : userInputParse)
+      for( String stringIter : userInputParse )
       {
         Simulator.deleteTagSeeded(stringIter);
         Simulator.deleteTagFound(stringIter);

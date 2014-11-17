@@ -22,7 +22,7 @@ public class App
   public static List<String> globalTagsSeeded = new Vector<String>();
   public static List<String> globalTagsFound = new Vector<String>();
   public static List<Post> globalPosts = new Vector<Post>();
-  //This is used whenever the user filters all posts.  Think of it as a backup.
+  // This is used whenever the user filters all posts. Think of it as a backup.
   public static List<Post> globalPostsPreFilter = new Vector<Post>();
   public static List<String> globalReblogTexts;
   public static TumblrReblogGUI win;

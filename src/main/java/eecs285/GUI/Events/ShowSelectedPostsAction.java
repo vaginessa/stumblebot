@@ -9,6 +9,6 @@ public class ShowSelectedPostsAction implements ActionListener
 {
   public void actionPerformed(ActionEvent event)
   {
-      Simulator.updatePosts();
+    Simulator.updatePosts();
   }
 }

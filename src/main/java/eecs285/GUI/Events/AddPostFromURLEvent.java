@@ -24,7 +24,7 @@ public class AddPostFromURLEvent implements ActionListener
   private static JTextField URLText;
   private static JButton okButton;
   private static CloseButton cancelButton;
-  
+
   public void actionPerformed(ActionEvent event)
   {
     frameDialog = new JDialog(App.win, "Adding Post From URL");
@@ -33,8 +33,7 @@ public class AddPostFromURLEvent implements ActionListener
     centerPanel = new JPanel(new FlowLayout());
     southPanel = new JPanel(new FlowLayout());
 
-    URLLabel = new JLabel(
-        "Please enter the URL of the post you wish you add",
+    URLLabel = new JLabel("Please enter the URL of the post you wish you add",
         SwingConstants.CENTER);
     URLText = new JTextField(40);
     okButton = new JButton("OK");
@@ -45,7 +44,7 @@ public class AddPostFromURLEvent implements ActionListener
     centerPanel.add(URLText);
     southPanel.add(okButton);
     southPanel.add(cancelButton);
-    
+
     frameDialog.getContentPane().setLayout(
         new BoxLayout(frameDialog.getContentPane(), BoxLayout.Y_AXIS));
     frameDialog.add(northPanel);

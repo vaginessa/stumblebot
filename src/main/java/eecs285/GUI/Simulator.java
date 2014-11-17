@@ -5,9 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.List;
 import java.util.Scanner;
-import java.util.Vector;
 
 import javax.swing.JOptionPane;
 
@@ -122,14 +120,14 @@ public class Simulator
     }
   }
 
-  @SuppressWarnings("resource")
-  public static List<String> loadTags(File inputFile)
+  public static void loadTags(File inputFile)
   {
+    boolean atSeeded = false;
+    boolean atFound = false;
     if( inputFile == null )
     {
-      return null;
+      return;
     }
-    List<String> tagArray = new Vector<String>();
     Scanner in;
     try
     {
@@ -137,11 +135,23 @@ public class Simulator
       while( in.hasNextLine() )
       {
         String line = in.nextLine();
-        Scanner lineScanner = new Scanner(line);
-        String currentWord = lineScanner.next();
-        if(!currentWord.contains("//"))
+        if( line.equals("//Seeded Tags") )
         {
-          tagArray.add(currentWord);
+          atSeeded = true;
+        }
+        else if( line.equals("//Found Tags") )
+        {
+          atSeeded = false;
+          atFound = true;
+        }
+        if( atSeeded && !line.contains("//") )
+        {
+          addTag(line);
+        }
+        else if( atFound && !line.contains("//")
+            && !App.globalTagsFound.contains(line) )
+        {
+          App.globalTagsFound.add(line);
         }
       }
     }
@@ -149,8 +159,6 @@ public class Simulator
     {
       event.printStackTrace();
     }
-
-    return tagArray;
   }
 
   public static void saveTagList(File outputFile) throws IOException
@@ -165,14 +173,14 @@ public class Simulator
 
       writer.write("//Seeded Tags");
       writer.newLine();
-      for(String stringIter : App.globalTagsSeeded)
+      for( String stringIter : App.globalTagsSeeded )
       {
         writer.write(stringIter);
         writer.newLine();
       }
       writer.write("//Found Tags");
       writer.newLine();
-      for(String stringIter : App.globalTagsFound)
+      for( String stringIter : App.globalTagsFound )
       {
         writer.write(stringIter);
         writer.newLine();
@@ -190,7 +198,7 @@ public class Simulator
           event.getMessage()));
     }
   }
-  
+
   public static void savePostList(File outputFile) throws IOException
   {
     if( outputFile == null )
@@ -201,7 +209,7 @@ public class Simulator
     {
       BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
 
-      for( Post postIter : App.globalPosts)
+      for( Post postIter : App.globalPosts )
       {
         writer.write(postIter.toString());
         writer.newLine();

@@ -23,13 +23,7 @@ public class LoadListOfTagsEvent implements ActionListener
     if( chooserReturn == JFileChooser.APPROVE_OPTION )
     {
       chosenFile = chooser.getSelectedFile();
-      for( String stringIter : Simulator.loadTags(chosenFile) )
-      {
-        if( !App.globalTagsSeeded.contains(stringIter) )
-        {
-          App.globalTagsSeeded.add(stringIter);
-        }
-      }
+      Simulator.loadTags(chosenFile);
       Simulator.updateTags();
     }
   }
