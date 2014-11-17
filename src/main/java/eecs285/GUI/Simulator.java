@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 import com.tumblr.jumblr.types.Post;
@@ -139,7 +138,11 @@ public class Simulator
       {
         String line = in.nextLine();
         Scanner lineScanner = new Scanner(line);
-        tagArray.add(lineScanner.next());
+        String currentWord = lineScanner.next();
+        if(!currentWord.contains("//"))
+        {
+          tagArray.add(currentWord);
+        }
       }
     }
     catch( FileNotFoundException event )
@@ -160,11 +163,18 @@ public class Simulator
     {
       BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
 
-      DefaultListModel<String> currentTags = TumblrReblogGUI
-          .getTagDefaultListModel();
-      for( int iter = 0; iter < currentTags.getSize(); iter++ )
+      writer.write("//Seeded Tags");
+      writer.newLine();
+      for(String stringIter : App.globalTagsSeeded)
       {
-        writer.write(currentTags.elementAt(iter));
+        writer.write(stringIter);
+        writer.newLine();
+      }
+      writer.write("//Found Tags");
+      writer.newLine();
+      for(String stringIter : App.globalTagsFound)
+      {
+        writer.write(stringIter);
         writer.newLine();
       }
 
@@ -172,6 +182,37 @@ public class Simulator
       writer.close();
 
       JOptionPane.showMessageDialog(App.win, "All Tags Have Been Saved",
+          "Saved Tags", JOptionPane.PLAIN_MESSAGE);
+    }
+    catch( IOException event )
+    {
+      throw new IOException(String.format("Error writing to file. Error: %s\n",
+          event.getMessage()));
+    }
+  }
+  
+  public static void savePostList(File outputFile) throws IOException
+  {
+    if( outputFile == null )
+    {
+      return;
+    }
+    try
+    {
+      BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
+
+      for( Post postIter : App.globalPosts)
+      {
+        writer.write(postIter.toString());
+        writer.newLine();
+        writer.write(postIter.getPostUrl());
+        writer.newLine();
+      }
+
+      writer.flush();
+      writer.close();
+
+      JOptionPane.showMessageDialog(App.win, "All Posts Have Been Saved",
           "Saved Tags", JOptionPane.PLAIN_MESSAGE);
     }
     catch( IOException event )

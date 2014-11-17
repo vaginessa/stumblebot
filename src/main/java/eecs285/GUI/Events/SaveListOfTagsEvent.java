@@ -9,6 +9,7 @@ import javax.swing.JFileChooser;
 
 import eecs285.App;
 import eecs285.GUI.Simulator;
+import eecs285.GUI.TumblrReblogGUI;
 
 public class SaveListOfTagsEvent implements ActionListener
 {
@@ -32,6 +33,7 @@ public class SaveListOfTagsEvent implements ActionListener
       {
         System.out.printf(exceptionEvent.getMessage());
       }
+      TumblrReblogGUI.saved = true;
     }
   }
 }

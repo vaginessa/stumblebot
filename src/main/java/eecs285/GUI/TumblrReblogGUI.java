@@ -27,9 +27,11 @@ import eecs285.GUI.Events.CloseWindowEvent;
 import eecs285.GUI.Events.DeleteTagsEvent;
 import eecs285.GUI.Events.ExitProgramEvent;
 import eecs285.GUI.Events.FetchPostsAction;
+import eecs285.GUI.Events.FilterPostsAction;
 import eecs285.GUI.Events.LoadListOfPostsEvent;
 import eecs285.GUI.Events.LoadListOfTagsEvent;
-import eecs285.GUI.Events.PostButtonActionListener;
+import eecs285.GUI.Events.PostButtonAction;
+import eecs285.GUI.Events.RestorePostsAction;
 import eecs285.GUI.Events.SaveListOfPostsEvent;
 import eecs285.GUI.Events.SaveListOfTagsEvent;
 import eecs285.GUI.Events.SelectPostDetail;
@@ -56,12 +58,14 @@ public class TumblrReblogGUI extends JFrame
   // Items for User Interface
   private static JLabel tagLabel;
   private static JLabel postLabel;
+  private static JLabel automationText;
   private static JLabel credits;
   private static JPanel tagListPanel;
   private static JPanel postListPanel;
   private static JPanel allLists;
   private static JPanel buttonsRow1;
-  // private static JPanel automatePanel;
+  private static JPanel automationTextPanel;
+  private static JPanel automatePanel;
   private static JPanel creditsPanel;
   private static JComboBox<String> tagsCombo;
   private static JComboBox<String> postsCombo;
@@ -73,8 +77,11 @@ public class TumblrReblogGUI extends JFrame
   private static JScrollPane postScrollPane;
   // private static JCheckBox automate;
   private static JButton fetchButton;
-  private static JButton runButton;
+  private static JButton filterButton;
+  private static JButton restoreButton;
   private static JButton postButton;
+  private static JButton runButton;
+  private static JButton stopButton;
 
   public TumblrReblogGUI()
   {
@@ -131,7 +138,8 @@ public class TumblrReblogGUI extends JFrame
     postListPanel = new JPanel(new FlowLayout());
     allLists = new JPanel(new FlowLayout());
     buttonsRow1 = new JPanel(new FlowLayout());
-    // automatePanel = new JPanel(new FlowLayout());
+    automationTextPanel = new JPanel(new FlowLayout());
+    automatePanel = new JPanel(new FlowLayout());
     creditsPanel = new JPanel(new FlowLayout());
     tagsCombo = new JComboBox<String>();
     postsCombo = new JComboBox<String>();
@@ -173,15 +181,33 @@ public class TumblrReblogGUI extends JFrame
     allLists.add(postListPanel);
 
     fetchButton = new JButton("Update Posts From Seeded Tags");
-    runButton = new JButton("Automatically Post");
+    filterButton = new JButton("Filter All Posts");
+    restoreButton = new JButton("Restore Posts to Pre-Filtered State");
     postButton = new JButton("Reblog All Posts");
+    restoreButton.setEnabled(false);
 
     fetchButton.addActionListener(new FetchPostsAction());
-    postButton.addActionListener(new PostButtonActionListener());
+    filterButton.addActionListener(new FilterPostsAction());
+    restoreButton.addActionListener(new RestorePostsAction());
+    postButton.addActionListener(new PostButtonAction());
+
+    buttonsRow1.add(fetchButton);
+    buttonsRow1.add(filterButton);
+    buttonsRow1.add(restoreButton);
+    buttonsRow1.add(postButton);
+    
+    automationText = new JLabel("Automation Options:");
+    automationTextPanel.add(automationText);
+    
+    runButton = new JButton("Automatically Post");
+    stopButton = new JButton("Stop Automation");
+    
+    automatePanel.add(runButton);
+    automatePanel.add(stopButton);
     
     //DEBUG OPTIONS
     JPanel debugOptions = new JPanel(new FlowLayout());
-    JLabel debugText = new JLabel("Row of debugging buttons");
+    JLabel debugText = new JLabel("Row of debugging buttons: ");
     JButton allTypes = new JButton("Create Every Type of Post");
     allTypes.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
@@ -216,10 +242,7 @@ public class TumblrReblogGUI extends JFrame
     debugOptions.add(clearPosts);
     add(debugOptions);
     
-    
-    buttonsRow1.add(fetchButton);
-    buttonsRow1.add(runButton);
-    buttonsRow1.add(postButton);
+    //End of debug options
 
     // automate = new JCheckBox("Automate Posts?", false);
     credits = new JLabel(
@@ -230,8 +253,14 @@ public class TumblrReblogGUI extends JFrame
     creditsPanel.add(credits);
     add(allLists);
     add(buttonsRow1);
-    // add(automatePanel);
+    add(automationTextPanel);
+    add(automatePanel);
     add(creditsPanel);
+  }
+
+  public static JButton getRestoreButton()
+  {
+    return restoreButton;
   }
 
   public static JList<String> getTagJList()

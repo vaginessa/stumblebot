@@ -11,17 +11,22 @@ import eecs285.GUI.TumblrReblogGUI;
 
 public class CloseWindowEvent implements WindowListener
 {
-  public void windowClosing(WindowEvent event) 
+  public void windowClosing(WindowEvent event)
   {
-    if(TumblrReblogGUI.saved)
+    if( App.globalTagsSeeded.isEmpty() && App.globalTagsFound.isEmpty() )
+    {
+      TumblrReblogGUI.saved = true;
+    }
+    if( TumblrReblogGUI.saved )
     {
       System.exit(0);
     }
     else
     {
       if( JOptionPane.showConfirmDialog(App.win,
-          "Are you sure that you want to exit the program without saving?", 
-          "Confirmation", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION )
+          "Are you sure that you want to exit the program"
+              + " without saving your tag list?", "Confirmation",
+          JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION )
       {
         System.out.print("Yes");
         App.win.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -34,19 +39,36 @@ public class CloseWindowEvent implements WindowListener
         App.win.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
       }
     }
-}
+  }
 
   @Override
-  public void windowOpened(WindowEvent event){}
+  public void windowOpened(WindowEvent event)
+  {
+  }
+
   @Override
-  public void windowClosed(WindowEvent event){}
+  public void windowClosed(WindowEvent event)
+  {
+  }
+
   @Override
-  public void windowIconified(WindowEvent event){}
+  public void windowIconified(WindowEvent event)
+  {
+  }
+
   @Override
-  public void windowDeiconified(WindowEvent event){}
+  public void windowDeiconified(WindowEvent event)
+  {
+  }
+
   @Override
-  public void windowActivated(WindowEvent event){}
+  public void windowActivated(WindowEvent event)
+  {
+  }
+
   @Override
-  public void windowDeactivated(WindowEvent event){}
+  public void windowDeactivated(WindowEvent event)
+  {
+  }
 
 }
