@@ -43,7 +43,6 @@ public class SelectPostDetail extends MouseAdapter
   private static JLabel question;
   private static JLabel answer;
   private static JLabel trackName;
-  private static JLabel chatTitle;
   private static JLabel chatBody;
   private static JLabel linkTitle;
   private static JLabel linkDescription;
@@ -60,7 +59,6 @@ public class SelectPostDetail extends MouseAdapter
   private static JLabel getQuestion;
   private static JLabel getAnswer;
   private static JLabel getTrackName;
-  private static JLabel getChatTitle;
   private static JLabel getChatBody;
   private static JLabel getLinkTitle;
   private static JLabel getLinkDescription;
@@ -92,7 +90,6 @@ public class SelectPostDetail extends MouseAdapter
       question = new JLabel("Question: ");
       answer = new JLabel("Answer: ");
       trackName = new JLabel("Track Name: ");
-      chatTitle = new JLabel("Chat Title: ");
       chatBody = new JLabel("Chat Body: ");
       linkTitle = new JLabel("Link Title: ");
       linkDescription = new JLabel("Link Description: ");
@@ -187,18 +184,8 @@ public class SelectPostDetail extends MouseAdapter
       }
       else if( toView.getType().equals("chat") )
       {
-        leftPanel.add(chatTitle);
         leftPanel.add(chatBody);
-        String chatTitleString;
         String chatBodyString;
-        if(((ChatPost) toView).getTitle().length() > 60)
-        {
-          chatTitleString = ((ChatPost) toView).getTitle().substring(0, 60) + "...";
-        }
-        else
-        {
-          chatTitleString = ((ChatPost) toView).getTitle();
-        }
         if(((ChatPost) toView).getBody().length() > 60)
         {
           chatBodyString = ((ChatPost) toView).getBody().substring(0, 60) + "...";
@@ -207,9 +194,7 @@ public class SelectPostDetail extends MouseAdapter
         {
           chatBodyString = ((ChatPost) toView).getBody();
         }
-        getChatTitle = new JLabel(chatTitleString + "\0");
         getChatBody = new JLabel(chatBodyString + "\0");
-        rightPanel.add(getChatTitle);
         rightPanel.add(getChatBody);
       }
       else if( toView.getType().equals("link") )
