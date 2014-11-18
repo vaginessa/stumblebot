@@ -43,6 +43,7 @@ public class ReblogConfirmActionListener implements ActionListener
         System.out.print(stringIter + ", ");
       }
       System.out.println();
+      System.out.println("With Message: " + messageInput);
       System.out.println("Now following " + selectedPost.getBlogName());
       // selectedPost.reblog(App.ourBlog.getTitle());
       // App.client.blogInfo(selectedPost.getBlogName()).follow();
