@@ -17,9 +17,14 @@ public class Filter
   {
     return inPost.getTags();
   }
+
+  static String textForPost(Post inPost)
+  {
+    return "";
+  }
   
   static String titleForPost(Post inPost)
   {
-    return inPost.getBlogName() + " Repost";
+    return inPost.getBlogName();
   }
 }
