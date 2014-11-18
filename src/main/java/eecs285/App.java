@@ -2,8 +2,8 @@ package eecs285;
 
 
 import java.awt.Dimension;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 import javax.swing.WindowConstants;
 
@@ -19,11 +19,11 @@ import eecs285.GUI.TumblrReblogGUI;
  */
 public class App
 {
-  public static List<String> globalTagsSeeded = new Vector<String>();
-  public static List<String> globalTagsFound = new Vector<String>();
-  public static List<Post> globalPosts = new Vector<Post>();
+  public static List<String> globalTagsSeeded = new ArrayList<String>();
+  public static List<String> globalTagsFound = new ArrayList<String>();
+  public static List<Post> globalPosts = new ArrayList<Post>();
   // This is used whenever the user filters all posts. Think of it as a backup.
-  public static List<Post> globalPostsPreFilter = new Vector<Post>();
+  public static List<Post> globalPostsPreFilter = new ArrayList<Post>();
   public static List<String> globalReblogTexts;
   public static TumblrReblogGUI win;
   public static Blog ourBlog;

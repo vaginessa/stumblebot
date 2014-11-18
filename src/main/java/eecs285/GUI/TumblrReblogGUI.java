@@ -215,6 +215,7 @@ public class TumblrReblogGUI extends JFrame
     restoreButton = new JButton("Restore Posts to Pre-Filtered State");
     postButton = new JButton("Reblog All Posts");
     restoreButton.setEnabled(false);
+    postButton.setEnabled(false);
 
     fetchButton.addActionListener(new FetchPostsAction());
     filterButton.addActionListener(new FilterPostsAction());
