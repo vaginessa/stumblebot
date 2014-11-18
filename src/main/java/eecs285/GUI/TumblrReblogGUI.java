@@ -78,7 +78,6 @@ public class TumblrReblogGUI extends JFrame
   private static JList<String> postList;
   private static JScrollPane tagScrollPane;
   private static JScrollPane postScrollPane;
-  // private static JCheckBox automate;
   private static JButton fetchButton;
   private static JButton filterButton;
   private static JButton restoreButton;
@@ -91,6 +90,8 @@ public class TumblrReblogGUI extends JFrame
   {
     super("Tumblr Reblog Bot");
     setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+    // Prototype for background image
+    // add(new ContentPanel());
     createMenu();
     createUI();
     setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -102,8 +103,10 @@ public class TumblrReblogGUI extends JFrame
   private void createMenu()
   {
     menuBar = new JMenuBar();
+
     fileMenu = new JMenu("File");
     editMenu = new JMenu("Edit");
+
     loadListOfTags = new JMenuItem("Load List Of Tags");
     loadListOfPosts = new JMenuItem("Load List Of Posts");
     saveListOfTags = new JMenuItem("Save List Of Tags");
@@ -112,6 +115,7 @@ public class TumblrReblogGUI extends JFrame
     addTags = new JMenuItem("Add Tag(s)");
     deleteTags = new JMenuItem("Delete Tag(s)");
     addPostFromURL = new JMenuItem("Add Post From URL");
+
     loadListOfTags.addActionListener(new LoadListOfTagsEvent());
     loadListOfPosts.addActionListener(new LoadListOfPostsEvent());
     saveListOfTags.addActionListener(new SaveListOfTagsEvent());
@@ -120,6 +124,7 @@ public class TumblrReblogGUI extends JFrame
     addTags.addActionListener(new AddTagsEvent());
     deleteTags.addActionListener(new DeleteTagsEvent());
     addPostFromURL.addActionListener(new AddPostFromURLEvent());
+
     fileMenu.add(loadListOfTags);
     fileMenu.add(loadListOfPosts);
     fileMenu.add(saveListOfTags);
@@ -216,7 +221,6 @@ public class TumblrReblogGUI extends JFrame
     automatePanel.add(stopButton);
     automatePanel.add(getTimeButton);
 
-
     // DEBUG OPTIONS
     JPanel debugOptions = new JPanel(new FlowLayout());
     JLabel debugText = new JLabel("Row of debugging buttons: ");
@@ -262,13 +266,11 @@ public class TumblrReblogGUI extends JFrame
 
     // End of debug options
 
-    // automate = new JCheckBox("Automate Posts?", false);
     credits = new JLabel(
         "Created by J. Ames, D. Brooks, J. Hu, J. Jin, Y. Seetharaman"
             + " for EECS285 during Fall 2014.", SwingConstants.CENTER);
-
-    // automatePanel.add(automate);
     creditsPanel.add(credits);
+
     add(allLists);
     add(buttonsRow1);
     add(automationTextPanel);
@@ -305,6 +307,7 @@ public class TumblrReblogGUI extends JFrame
   {
     return stopButton;
   }
+
   public static JButton getTimeButton()
   {
     return getTimeButton;
