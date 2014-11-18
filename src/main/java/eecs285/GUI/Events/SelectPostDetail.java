@@ -69,6 +69,7 @@ public class SelectPostDetail extends MouseAdapter
   private static JLabel getVideoCaption;
   private static OpenURLButton openButton;
   private static JButton deleteButton;
+  private static ReblogButton reblogButton;
   private static CloseButton nothingButton;
   private static String selected;
 
@@ -314,6 +315,7 @@ public class SelectPostDetail extends MouseAdapter
       openButton = new OpenURLButton(toView);
       deleteButton = new JButton("Delete");
       deleteButton.addActionListener(new SelectPostDetailActionListener());
+      reblogButton = new ReblogButton(toView);
       nothingButton = new CloseButton("Nothing");
 
       northPanel.add(leftPanel);
@@ -322,6 +324,7 @@ public class SelectPostDetail extends MouseAdapter
       centerPanel.add(confirm);
       southPanel.add(openButton);
       southPanel.add(deleteButton);
+      southPanel.add(reblogButton);
       southPanel.add(nothingButton);
 
       leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.PAGE_AXIS));

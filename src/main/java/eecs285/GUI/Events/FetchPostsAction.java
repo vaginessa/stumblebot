@@ -2,8 +2,8 @@ package eecs285.GUI.Events;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 import com.tumblr.jumblr.types.Post;
 
@@ -26,7 +26,7 @@ public class FetchPostsAction implements ActionListener
       {
         if( !App.globalPosts.contains(stringIterCurrent) )
         {
-          ((Vector<Post>) App.globalPosts).addElement(stringIterCurrent);
+          ((ArrayList<Post>) App.globalPosts).add(stringIterCurrent);
         }
       }
     }

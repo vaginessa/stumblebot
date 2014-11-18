@@ -5,13 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.PriorityQueue;
 import java.util.TreeMap;
-import java.util.Vector;
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
-
-import com.tumblr.jumblr.types.*;
+import com.tumblr.jumblr.types.Post;
 
 public class FindTags
 {
@@ -45,7 +41,7 @@ public class FindTags
     {
       pQueue.add(entry);
     }
-    List<String> topTags = new Vector<String>();*/
+    List<String> topTags = new ArrayList<String>();*/
     sorted_tagMap.putAll(tagMap);
     for(int tagNum = 0; tagNum < maxTags; ++tagNum)
     {
