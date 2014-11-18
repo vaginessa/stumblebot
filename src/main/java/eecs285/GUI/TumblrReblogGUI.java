@@ -1,12 +1,18 @@
 package eecs285.GUI;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -86,18 +92,32 @@ public class TumblrReblogGUI extends JFrame
   private static JButton stopButton;
   private static JButton getTimeButton;
 
+  private static BufferedImage image;
+
   public TumblrReblogGUI()
   {
     super("Tumblr Reblog Bot");
+    createBackground();
     setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
-    // Prototype for background image
-    // add(new ContentPanel());
     createMenu();
     createUI();
     setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     addWindowListener(new CloseWindowEvent());
     setResizable(false);
     setVisible(true);
+  }
+
+  private void createBackground()
+  {
+    try
+    {
+      image = ImageIO.read(new File("src/main/java/images/background.png"));
+      setContentPane(new JLabel(new ImageIcon(image)));
+    }
+    catch( IOException event )
+    {
+      event.printStackTrace();
+    }
   }
 
   private void createMenu()
@@ -158,7 +178,8 @@ public class TumblrReblogGUI extends JFrame
     postsCombo.addItem("All Posts");
     postsCombo.addActionListener(new ShowSelectedPostsAction());
 
-    tagLabel = new JLabel("All Currently Seeded Tags");
+    tagLabel = new JLabel("Showing Selected Tags");
+    tagLabel.setForeground(Color.white);
     tagLabel.setBorder(new EmptyBorder(10, 5, 5, 5));
     defaultTagList = new DefaultListModel<String>();
     tagList = new JList<String>(defaultTagList);
@@ -172,7 +193,8 @@ public class TumblrReblogGUI extends JFrame
     tagListPanel.add(tagScrollPane);
     tagListPanel.setBorder(new EmptyBorder(10, 10, 10, 5));
 
-    postLabel = new JLabel("All Currently Listed Posts");
+    postLabel = new JLabel("Showing Posts With Selected Tag");
+    postLabel.setForeground(Color.white);
     postLabel.setBorder(new EmptyBorder(10, 5, 5, 5));
     defaultPostList = new DefaultListModel<String>();
     postList = new JList<String>(defaultPostList);
@@ -205,6 +227,7 @@ public class TumblrReblogGUI extends JFrame
     buttonsRow1.add(postButton);
 
     automationText = new JLabel("Automation Options:");
+    automationText.setForeground(Color.white);
     automationTextPanel.add(automationText);
 
     startButton = new JButton("Start Automation");
@@ -223,7 +246,9 @@ public class TumblrReblogGUI extends JFrame
 
     // DEBUG OPTIONS
     JPanel debugOptions = new JPanel(new FlowLayout());
+    debugOptions.setOpaque(false);
     JLabel debugText = new JLabel("Row of debugging buttons: ");
+    debugText.setForeground(Color.white);
     JButton allTypes = new JButton("Create Every Type of Post");
     allTypes.addActionListener(new ActionListener()
     {
@@ -268,9 +293,18 @@ public class TumblrReblogGUI extends JFrame
 
     credits = new JLabel(
         "Created by J. Ames, D. Brooks, J. Hu, J. Jin, Y. Seetharaman"
-            + " for EECS285 during Fall 2014.", SwingConstants.CENTER);
+            + " for EECS 285 during Fall 2014.", SwingConstants.CENTER);
+    credits.setForeground(Color.white);
     creditsPanel.add(credits);
 
+    tagListPanel.setOpaque(false);
+    postListPanel.setOpaque(false);
+    allLists.setOpaque(false);
+    buttonsRow1.setOpaque(false);
+    automationTextPanel.setOpaque(false);
+    automatePanel.setOpaque(false);
+    creditsPanel.setOpaque(false);
+    
     add(allLists);
     add(buttonsRow1);
     add(automationTextPanel);
