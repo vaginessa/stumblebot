@@ -14,5 +14,6 @@ public class RestorePostsAction implements ActionListener
     App.globalPosts = App.globalPostsPreFilter;
     Simulator.updatePosts();
     TumblrReblogGUI.getRestoreButton().setEnabled(false);
+    TumblrReblogGUI.getPostButton().setEnabled(false);
   }
 }

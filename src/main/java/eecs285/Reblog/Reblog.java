@@ -4,17 +4,17 @@ import java.util.List;
 
 import com.tumblr.jumblr.types.Post;
 
-import eecs285.App;
-
 public class Reblog
 {
   public Reblog()
   {
-    List<Post> postsToReblog = Filter.postsToReblog(App.globalPosts);
-    for(Post post : postsToReblog)
+    List<Post> postsToReblog = Filter.postsToReblog();
+    for(Post postIter : postsToReblog)
     {
-      post.setTags(Filter.tagsFromPost(post));
-      post.reblog(Filter.titleForPost(post));
+      System.out.println(postIter.toString());
+      postIter.setTags(Filter.tagsFromPost(postIter));
+      //postIter.reblog(App.ourBlog.getTitle());
+      //App.client.blogInfo(postIter.getBlogName()).follow();
     }
   }
 }

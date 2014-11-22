@@ -37,7 +37,7 @@ public class SelectTagDetail extends MouseAdapter
       selected = TumblrReblogGUI.getTagJList().getModel()
           .getElementAt(location);
 
-      confirm = new JLabel("Would you like to do to this tag?",
+      confirm = new JLabel("What would you like to do to this tag?",
           SwingConstants.CENTER);
       deleteButton = new JButton("Delete");
       deleteButton.addActionListener(new SelectTagDetailActionListener());
