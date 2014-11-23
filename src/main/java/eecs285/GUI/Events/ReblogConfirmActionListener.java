@@ -28,7 +28,7 @@ public class ReblogConfirmActionListener implements ActionListener
       String[] tagsInputParse = tagsInput.split(",");
       for( String stringIter : tagsInputParse )
       {
-        if(!insertTags.contains(stringIter))
+        if( !insertTags.contains(stringIter) )
         {
           insertTags.add(stringIter);
         }
@@ -38,7 +38,7 @@ public class ReblogConfirmActionListener implements ActionListener
       // Set Message here
       System.out.println("Reblog post " + selectedPost.toString());
       System.out.println("With Tags: ");
-      for(String stringIter : selectedPost.getTags())
+      for( String stringIter : selectedPost.getTags() )
       {
         System.out.print(stringIter + ", ");
       }

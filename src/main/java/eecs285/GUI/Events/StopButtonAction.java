@@ -9,7 +9,12 @@ public class StopButtonAction implements ActionListener
 {
   public void actionPerformed(ActionEvent event)
   {
+    TumblrReblogGUI.getFetchButton().setEnabled(true);
+    TumblrReblogGUI.getFilterButton().setEnabled(true);
+    TumblrReblogGUI.getRestoreButton().setEnabled(true);
+    TumblrReblogGUI.getPostButton().setEnabled(true);
     TumblrReblogGUI.getStartButton().setEnabled(true);
     TumblrReblogGUI.getStopButton().setEnabled(false);
+    TumblrReblogGUI.getTimeButton().setEnabled(false);
   }
 }

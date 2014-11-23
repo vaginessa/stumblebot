@@ -1,7 +1,7 @@
 package eecs285.Inputs;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 import com.tumblr.jumblr.types.Post;
 
@@ -13,16 +13,16 @@ public class FindPosts
   // gets the first 10 posts relevant to each of the tags
   public static List<Post> findFrom(List<String> inTags)
   {
-    List<Post> allPosts = new Vector<Post>();
-    List<Post> currentPosts = new Vector<Post>();
-    for(String stringIter : inTags)
+    List<Post> allPosts = new ArrayList<Post>();
+    List<Post> currentPosts = new ArrayList<Post>();
+    for( String stringIter : inTags )
     {
       currentPosts = App.client.tagged(stringIter);
-      for(Post stringIterCurrent : currentPosts)
+      for( Post stringIterCurrent : currentPosts )
       {
-        if(!allPosts.contains(stringIterCurrent))
+        if( !allPosts.contains(stringIterCurrent) )
         {
-          ((Vector<Post>) allPosts).addElement(stringIterCurrent);
+          ((ArrayList<Post>) allPosts).add(stringIterCurrent);
         }
       }
     }
