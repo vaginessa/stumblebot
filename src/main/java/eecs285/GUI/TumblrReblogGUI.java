@@ -305,7 +305,7 @@ public class TumblrReblogGUI extends JFrame
     automationTextPanel.setOpaque(false);
     automatePanel.setOpaque(false);
     creditsPanel.setOpaque(false);
-    
+
     add(allLists);
     add(buttonsRow1);
     add(automationTextPanel);

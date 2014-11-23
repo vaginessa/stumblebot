@@ -9,12 +9,12 @@ public class Reblog
   public Reblog()
   {
     List<Post> postsToReblog = Filter.postsToReblog();
-    for(Post postIter : postsToReblog)
+    for( Post postIter : postsToReblog )
     {
       System.out.println(postIter.toString());
       postIter.setTags(Filter.tagsFromPost(postIter));
-      //postIter.reblog(App.ourBlog.getTitle());
-      //App.client.blogInfo(postIter.getBlogName()).follow();
+      // postIter.reblog(App.ourBlog.getTitle());
+      // App.client.blogInfo(postIter.getBlogName()).follow();
     }
   }
 }

@@ -1,8 +1,10 @@
 package eecs285.Utility;
 
-public class Timer {
+public class Timer
+{
 
   public static long startTime = 0;
+
   public static void start()
   {
     startTime = System.currentTimeMillis();
@@ -12,7 +14,7 @@ public class Timer {
   {
     return System.currentTimeMillis() - startTime;
   }
-  
+
   public static long getStartTime()
   {
     return startTime;

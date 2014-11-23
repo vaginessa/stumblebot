@@ -17,7 +17,7 @@ public class Filter
     }
     return App.globalPosts;
   }
-  
+
   static List<String> tagsFromPost(Post inPost)
   {
     return inPost.getTags();
@@ -27,7 +27,7 @@ public class Filter
   {
     return "";
   }
-  
+
   static String titleForPost(Post inPost)
   {
     return inPost.getBlogName();

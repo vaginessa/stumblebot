@@ -15,12 +15,12 @@ public class FindPosts
   {
     List<Post> allPosts = new ArrayList<Post>();
     List<Post> currentPosts = new ArrayList<Post>();
-    for(String stringIter : inTags)
+    for( String stringIter : inTags )
     {
       currentPosts = App.client.tagged(stringIter);
-      for(Post stringIterCurrent : currentPosts)
+      for( Post stringIterCurrent : currentPosts )
       {
-        if(!allPosts.contains(stringIterCurrent))
+        if( !allPosts.contains(stringIterCurrent) )
         {
           ((ArrayList<Post>) allPosts).add(stringIterCurrent);
         }
