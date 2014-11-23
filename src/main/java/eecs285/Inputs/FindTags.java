@@ -1,13 +1,9 @@
 package eecs285.Inputs;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.TreeMap;
-
 import com.tumblr.jumblr.types.Post;
+
+import java.util.*;
+import java.util.Map.Entry;
 
 public class FindTags
 {
@@ -23,7 +19,7 @@ public class FindTags
   }
   
   static List<String> findFrom(List<Post> inPosts)
-  {
+  { /*
     Map<String, Integer> tagMap = new HashMap<String, Integer>();
     ValueComparator bvc =  new ValueComparator(tagMap);
     TreeMap<String,Integer> sorted_tagMap = new TreeMap<String,Integer>(bvc);
@@ -35,19 +31,20 @@ public class FindTags
         tagMap.put(tag, val == null ? 1 : val + 1);
       }
     }
-    /*Comparator<Entry<String, Integer>> pQueuecomp = new pQueueComparator();
+    Comparator<Entry<String, Integer>> pQueuecomp = new pQueueComparator();
     PriorityQueue<Entry<String, Integer>> pQueue = new PriorityQueue<Entry<String, Integer>>(tagMap.size(), pQueuecomp);
     for(Entry<String, Integer> entry : tagMap.entrySet())
     {
       pQueue.add(entry);
     }
-    List<String> topTags = new ArrayList<String>();*/
+    List<String> topTags = new ArrayList<String>();
     sorted_tagMap.putAll(tagMap);
     for(int tagNum = 0; tagNum < maxTags; ++tagNum)
     {
       topTags.add(tagNum, pQueue.poll().getKey());
     }
-    return topTags;
+    return topTags;*/
+    return new Vector<String>();
   }
 }
 

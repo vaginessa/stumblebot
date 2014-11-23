@@ -1,16 +1,20 @@
 package eecs285.Reblog;
 
-import java.util.List;
-
 import com.tumblr.jumblr.types.Post;
-
 import eecs285.App;
+
+import java.util.List;
 
 // Yogesh <-
 public class Filter
 {
   public static List<Post> postsToReblog()
   {
+    long noteCount = 0;
+    for (Post post : App.globalPosts)
+    {
+      
+    }
     return App.globalPosts;
   }
   
