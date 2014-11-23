@@ -1,5 +1,6 @@
 package eecs285.Inputs;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -17,15 +18,6 @@ public class FindTags
 {
   static Integer maxTags = 50;
   
-  private class pQueueComparator implements Comparator<Entry<String, Integer>>
-  {
-    @Override
-    public int compare(Entry<String, Integer> o1, Entry<String, Integer> o2)
-    {
-      return o1.getValue() - o2.getValue();
-    }
-  }
-  
   static List<String> findFrom(List<Post> inPosts)
   {
     Map<String, Integer> tagMap = new HashMap<String, Integer>();
@@ -39,17 +31,15 @@ public class FindTags
         tagMap.put(tag, val == null ? 1 : val + 1);
       }
     }
-    /*Comparator<Entry<String, Integer>> pQueuecomp = new pQueueComparator();
-    PriorityQueue<Entry<String, Integer>> pQueue = new PriorityQueue<Entry<String, Integer>>(tagMap.size(), pQueuecomp);
-    for(Entry<String, Integer> entry : tagMap.entrySet())
-    {
-      pQueue.add(entry);
-    }
-    List<String> topTags = new Vector<String>();*/
     sorted_tagMap.putAll(tagMap);
-    for(int tagNum = 0; tagNum < maxTags; ++tagNum)
+    List<String> topTags = new Vector<String>();
+    for (Entry<String, Integer> entry : sorted_tagMap.entrySet())
     {
-      topTags.add(tagNum, pQueue.poll().getKey());
+      topTags.add(entry.getKey());
+      if(topTags.size() == maxTags)
+      {
+        break;
+      }
     }
     return topTags;
   }

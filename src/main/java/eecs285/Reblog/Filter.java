@@ -1,14 +1,15 @@
 package eecs285.Reblog;
 
-import com.tumblr.jumblr.types.Post;
-import eecs285.App;
-
 import java.util.List;
+
+import com.tumblr.jumblr.types.Post;
+
+import eecs285.App;
 
 // Yogesh <-
 public class Filter
 {
-  static List<Post> postsToReblog(List<Post> inPosts)
+  public static List<Post> postsToReblog()
   {
     return App.globalPosts;
   }
@@ -17,9 +18,14 @@ public class Filter
   {
     return inPost.getTags();
   }
+
+  static String textForPost(Post inPost)
+  {
+    return "";
+  }
   
   static String titleForPost(Post inPost)
   {
-    return inPost.getBlogName() + " Repost";
+    return inPost.getBlogName();
   }
 }
