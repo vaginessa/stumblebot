@@ -1,30 +1,24 @@
 package eecs285;
 
 
-import java.awt.Desktop;
-import java.awt.Dimension;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
-import javax.swing.JOptionPane;
-import javax.swing.WindowConstants;
-
+import com.tumblr.jumblr.JumblrClient;
+import com.tumblr.jumblr.types.Blog;
+import com.tumblr.jumblr.types.Post;
+import eecs285.GUI.TumblrReblogGUI;
 import org.scribe.builder.ServiceBuilder;
 import org.scribe.builder.api.TumblrApi;
 import org.scribe.model.Token;
 import org.scribe.model.Verifier;
 import org.scribe.oauth.OAuthService;
 
-import com.tumblr.jumblr.JumblrClient;
-import com.tumblr.jumblr.types.Blog;
-import com.tumblr.jumblr.types.Post;
-import com.tumblr.jumblr.types.User;
-
-import eecs285.GUI.TumblrReblogGUI;
+import javax.swing.*;
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  *
@@ -103,8 +97,9 @@ public class App
 
     client = new JumblrClient(CONSUMER_KEY, CONSUMER_SECRET);
     client.setToken(accessToken.getToken(), accessToken.getSecret());
-    User user = client.user();
-    System.out.println(user);
+
+    //User user = client.user();
+    //System.out.println(user);
     // OAuthRequest request = new OAuthRequest( Verb.POST,
     // "api.tumblr.com/v2/blog//post/reblog");
     // service.signRequest( accessToken, request );
