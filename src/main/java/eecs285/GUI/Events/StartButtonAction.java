@@ -4,10 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import eecs285.GUI.TumblrReblogGUI;
+import eecs285.Utility.PostMain;
 import eecs285.Utility.Timer;
 
 public class StartButtonAction implements ActionListener
 {
+  public static int numPosts = 5;
+  
   public void actionPerformed(ActionEvent event)
   {
     Timer.start();
@@ -18,5 +21,8 @@ public class StartButtonAction implements ActionListener
     TumblrReblogGUI.getStartButton().setEnabled(false);
     TumblrReblogGUI.getStopButton().setEnabled(true);
     TumblrReblogGUI.getTimeButton().setEnabled(true);
+    
+    PostMain.postMain();
+      
   }
 }

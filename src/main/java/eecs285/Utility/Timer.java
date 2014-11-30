@@ -14,10 +14,10 @@ public class Timer
 
   public static long startTime = 0;
   
-  public static long meanTime = 60000;
+  /*public static long meanTime = 60000;
   public static long stDevTime = 20000;
   public static long meanTimeBetweenPosts = 1000;
-  public static long stDevTimeBetweenPosts = 2000;
+  public static long stDevTimeBetweenPosts = 2000;*/
 
   public static void start()
   {
@@ -34,7 +34,7 @@ public class Timer
     return startTime;
   }
   
-  public static void timeSimulate(int numPostsToReblog)
+  /*public static void timeSimulate(int numPostsToReblog)
   {
     Random rand = new Random();
     int timesPosted = 0;
@@ -50,11 +50,11 @@ public class Timer
         if (System.currentTimeMillis() - startTime == waitTime
             || System.currentTimeMillis() - startTime == 0)
         {
-          //Reblog.ReblogOne(postsToReblog.get(timesPosted));
+          Reblog.ReblogOne(postsToReblog.get(timesPosted));
           timesPosted++;
         }      
       }
     }
-  }
+  }*/
 
 }
