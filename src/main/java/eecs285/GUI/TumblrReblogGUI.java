@@ -74,6 +74,7 @@ public class TumblrReblogGUI extends JFrame
   private static JPanel postListPanel;
   private static JPanel allLists;
   private static JPanel buttonsRow1;
+  private static JPanel buttonsRow2;
   private static JPanel automationTextPanel;
   private static JPanel automatePanel;
   private static JPanel creditsPanel;
@@ -168,6 +169,7 @@ public class TumblrReblogGUI extends JFrame
     postListPanel = new JPanel(new FlowLayout());
     allLists = new JPanel(new FlowLayout());
     buttonsRow1 = new JPanel(new FlowLayout());
+    buttonsRow2 = new JPanel(new FlowLayout());
     automationTextPanel = new JPanel(new FlowLayout());
     automatePanel = new JPanel(new FlowLayout());
     creditsPanel = new JPanel(new FlowLayout());
@@ -229,8 +231,8 @@ public class TumblrReblogGUI extends JFrame
     buttonsRow1.add(fetchPostsButton);
     buttonsRow1.add(fetchTagsButton);
     buttonsRow1.add(filterButton);
-    buttonsRow1.add(restoreButton);
-    buttonsRow1.add(postButton);
+    buttonsRow2.add(restoreButton);
+    buttonsRow2.add(postButton);
 
     automationText = new JLabel("Automation Options:");
     automationText.setForeground(Color.white);
@@ -274,7 +276,7 @@ public class TumblrReblogGUI extends JFrame
     JButton clearTags = new JButton("Clear ALL Tags");
     clearTags.addActionListener(new ActionListener()
     {
-      public void actionPerformed(ActionEvent e)
+      public void actionPerformed(ActionEvent event)
       {
         App.globalTagsSeeded.clear();
         Simulator.updateTags();
@@ -283,7 +285,7 @@ public class TumblrReblogGUI extends JFrame
     JButton clearPosts = new JButton("Clear ALL Posts");
     clearPosts.addActionListener(new ActionListener()
     {
-      public void actionPerformed(ActionEvent e)
+      public void actionPerformed(ActionEvent event)
       {
         App.globalPosts.clear();
         Simulator.updatePosts();
@@ -307,12 +309,14 @@ public class TumblrReblogGUI extends JFrame
     postListPanel.setOpaque(false);
     allLists.setOpaque(false);
     buttonsRow1.setOpaque(false);
+    buttonsRow2.setOpaque(false);
     automationTextPanel.setOpaque(false);
     automatePanel.setOpaque(false);
     creditsPanel.setOpaque(false);
 
     add(allLists);
     add(buttonsRow1);
+    add(buttonsRow2);
     add(automationTextPanel);
     add(automatePanel);
     add(creditsPanel);
