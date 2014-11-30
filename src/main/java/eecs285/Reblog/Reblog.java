@@ -8,30 +8,37 @@ import java.util.List;
 
 public class Reblog
 {
-  public Reblog()
+  
+  public static void ReblogOne(Post post)
+  {
+    System.out.println(post.toString());
+    post.setTags(Filter.tagsFromPost(post));
+    try {
+      post.reblog(App.blogName);
+    }
+    catch (NullPointerException e)
+    {
+      System.out.println("Exception: " + e.getMessage());
+    }
+
+    try {
+      post.like();
+    }
+    catch (NullPointerException e)
+    {
+      System.out.println("Exception: " + e.getMessage());
+    }
+
+    App.client.blogInfo(post.getBlogName()).follow();
+  }
+  
+  
+  public static void ReblogAll()
   {
     List<Post> postsToReblog = Filter.postsToReblog(App.globalPosts);
     for( Post post : postsToReblog )
     {
-      System.out.println(post.toString());
-      post.setTags(Filter.tagsFromPost(post));
-      try {
-        post.reblog(App.blogName);
-      }
-      catch (NullPointerException e)
-      {
-        System.out.println("Exception: " + e.getMessage());
-      }
-
-      try {
-        post.like();
-      }
-      catch (NullPointerException e)
-      {
-        System.out.println("Exception: " + e.getMessage());
-      }
-
-      App.client.blogInfo(post.getBlogName()).follow();
+      ReblogOne(post);
     }
     postsToReblog = Filter.postsToReblog(App.globalPosts);
     App.globalPosts = postsToReblog;

@@ -12,9 +12,9 @@ import com.tumblr.jumblr.types.Post;
 
 public class FindTags
 {
-  static Integer maxTags = 50;
+  static Integer maxTags = 10;
 
-  static List<String> findFrom(List<Post> inPosts)
+  public static List<String> findFrom(List<Post> inPosts)
   {
     Map<String, Integer> tagMap = new HashMap<String, Integer>();
     ValueComparator bvc = new ValueComparator(tagMap);

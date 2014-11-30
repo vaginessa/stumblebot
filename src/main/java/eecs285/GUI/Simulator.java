@@ -48,6 +48,7 @@ public class Simulator
     TumblrReblogGUI.getPostsCombo().removeAllItems();
     TumblrReblogGUI.getPostsCombo().addItem("All Posts");
     addGlobalTagsSeeded();
+    addGlobalTagsFound();
   }
 
   public static void addGlobalTagsSeeded()
@@ -66,7 +67,10 @@ public class Simulator
   {
     for( String tagIter : App.globalTagsFound )
     {
-      TumblrReblogGUI.getTagDefaultListModel().addElement(tagIter);
+      if( TumblrReblogGUI.getTagsCombo().getSelectedItem() == "Show Found Tags" )
+      {
+        TumblrReblogGUI.getTagDefaultListModel().addElement(tagIter);
+      }
       TumblrReblogGUI.getPostsCombo().addItem(tagIter);
     }
   }
