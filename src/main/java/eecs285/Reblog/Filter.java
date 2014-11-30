@@ -22,8 +22,9 @@ class PostBlogLikesComparator implements Comparator<Post>
 // Yogesh <-
 public class Filter
 {
-  static int numPostsToReblog = 5;
+  static int numPostsToReblog = 10;
 
+  static Map<String, Map<String, Integer> > tagMap = new HashMap<>();
   static TreeSet<Post> postTreeSet;
 
   // gets top n posts to reblog by checking poster's popularity
@@ -63,39 +64,41 @@ public class Filter
   */
   static List<String> tagsFromPost(Post inPost)
   {
-	  Map<String, Integer> emptyMap = null; // Empty Map for reference;
-	  Map<String, Map<String, Integer> > tagMap = null;//Map of the Map of Tags;
-	  List<String> posttags = inPost.getTags();
-	  List<String> returntags = null;
-	  int temp = 0;
+    List<String> postTags = inPost.getTags();
+    HashSet<String> returnTags = new HashSet<>();
+    int count = 0;
 
-      //For Each tag in the Main List.
-	  for (int i = 0; i < posttags.size(); i++) {
-		  String holder = posttags.get(i); //Grab the current Tag
-		//If an entry for that Tag doesn't exist, make a new
-		  if (!tagMap.containsKey(holder)) { 
-			  tagMap.put(holder, emptyMap);  
-		  }
-		  
-		  // For Each Map Entry, we need to run through Each tag again
-		  for (int j = 0; j < posttags.size(); j++) {	
-			  //if The entry for the tag doesn't exist, add it
-			  // and set the count to 0;
-			  if(!tagMap.get(holder).containsKey(posttags.get(i))) {
-				  tagMap.get(holder).put(posttags.get(i), 0);
-			  }
-			  
-			  //otherwise, we just need to increase the count of the tag by 1;
-			  temp = tagMap.get(holder).get(posttags.get(i));
-			  temp++;
-			  temp = tagMap.get(holder).put(posttags.get(i), temp);
-			  
-			  //Set the If condition to add to the List of Strings.
-			  
-		  }  
-		}
-	  
-    return returntags;
+    for (String tag : postTags) {
+      if (!tagMap.containsKey(tag)) {
+        tagMap.put(tag, new HashMap<String, Integer>());
+      }
+
+      for (String tag2 : postTags) {
+        if (!tagMap.get(tag).containsKey(tag2)) {
+          tagMap.get(tag).put(tag2, 1);
+        }
+        else {
+          count = tagMap.get(tag).get(tag2);
+          tagMap.get(tag).put(tag2, count + 1);
+        }
+      }
+    }
+
+    for (String tag : postTags) {
+      for (String tag2 : tagMap.get(tag).keySet()) {
+        returnTags.add(tag2);
+      }
+      if (returnTags.size() > 20)
+        break;
+    }
+    List<String> tagsStrings = new ArrayList<String>(returnTags);
+
+    System.out.println("Tags for post: " + inPost);
+    for (String tag : tagsStrings)
+      System.out.println(tag);
+    System.out.println();
+
+    return tagsStrings;
   }
   
   static String titleForPost(Post inPost)

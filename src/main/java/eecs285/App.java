@@ -38,9 +38,11 @@ public class App
   public static JumblrClient client;
   public static OAuthService service;
 
-  /* Api specifics */
+  /* Constants */
   private static final String CONSUMER_KEY = "fP4T709QbfTBOaR4mHLNFeE6BgbwxQw10qSypEN9onlWKGwsBn";
   private static final String CONSUMER_SECRET = "bnOedxoYrDveIr6mbg793VLkyhEF8RviaYyFFvuiWpajXZCFsB";
+
+  public static String blogName = "delicatedragonstarlight.tumblr.com";
 
   // Desktop Stuff
   private static Desktop userDesktop = Desktop.getDesktop();
@@ -104,7 +106,8 @@ public class App
     // "api.tumblr.com/v2/blog//post/reblog");
     // service.signRequest( accessToken, request );
 
-    // ourBlog = client.blogInfo("dedicateddragonstarlight");
+    ourBlog = client.blogInfo(blogName);
+    //System.out.println(ourBlog.getName());
 
     win = new TumblrReblogGUI();
     win.setMinimumSize(new Dimension(802, 670));
