@@ -33,6 +33,7 @@ import eecs285.GUI.Events.CloseWindowEvent;
 import eecs285.GUI.Events.DeleteTagsEvent;
 import eecs285.GUI.Events.ExitProgramEvent;
 import eecs285.GUI.Events.FetchPostsAction;
+import eecs285.GUI.Events.FetchTagsAction;
 import eecs285.GUI.Events.FilterPostsAction;
 import eecs285.GUI.Events.GetTimeAction;
 import eecs285.GUI.Events.LoadListOfPostsEvent;
@@ -84,7 +85,8 @@ public class TumblrReblogGUI extends JFrame
   private static JList<String> postList;
   private static JScrollPane tagScrollPane;
   private static JScrollPane postScrollPane;
-  private static JButton fetchButton;
+  private static JButton fetchPostsButton;
+  private static JButton fetchTagsButton;
   private static JButton filterButton;
   private static JButton restoreButton;
   private static JButton postButton;
@@ -210,19 +212,22 @@ public class TumblrReblogGUI extends JFrame
     allLists.add(tagListPanel);
     allLists.add(postListPanel);
 
-    fetchButton = new JButton("Update Posts From Seeded Tags");
+    fetchPostsButton = new JButton("Update Posts From Seeded Tags");
+    fetchTagsButton = new JButton("Update Tags From Seeded Posts");
     filterButton = new JButton("Filter All Posts");
     restoreButton = new JButton("Restore Posts to Pre-Filtered State");
     postButton = new JButton("Reblog All Posts");
     restoreButton.setEnabled(false);
     postButton.setEnabled(false);
 
-    fetchButton.addActionListener(new FetchPostsAction());
+    fetchPostsButton.addActionListener(new FetchPostsAction());
+    fetchTagsButton.addActionListener(new FetchTagsAction());
     filterButton.addActionListener(new FilterPostsAction());
     restoreButton.addActionListener(new RestorePostsAction());
     postButton.addActionListener(new PostButtonAction());
 
-    buttonsRow1.add(fetchButton);
+    buttonsRow1.add(fetchPostsButton);
+    buttonsRow1.add(fetchTagsButton);
     buttonsRow1.add(filterButton);
     buttonsRow1.add(restoreButton);
     buttonsRow1.add(postButton);
@@ -315,7 +320,7 @@ public class TumblrReblogGUI extends JFrame
 
   public static JButton getFetchButton()
   {
-    return fetchButton;
+    return fetchPostsButton;
   }
 
   public static JButton getFilterButton()
