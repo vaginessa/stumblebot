@@ -27,7 +27,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import eecs285.App;
-import eecs285.GUI.Events.AddPostFromURLEvent;
 import eecs285.GUI.Events.AddTagsEvent;
 import eecs285.GUI.Events.CloseWindowEvent;
 import eecs285.GUI.Events.DeleteTagsEvent;
@@ -36,7 +35,6 @@ import eecs285.GUI.Events.FetchPostsAction;
 import eecs285.GUI.Events.FetchTagsAction;
 import eecs285.GUI.Events.FilterPostsAction;
 import eecs285.GUI.Events.GetTimeAction;
-import eecs285.GUI.Events.LoadListOfPostsEvent;
 import eecs285.GUI.Events.LoadListOfTagsEvent;
 import eecs285.GUI.Events.PostButtonAction;
 import eecs285.GUI.Events.RestorePostsAction;
@@ -58,13 +56,11 @@ public class TumblrReblogGUI extends JFrame
   private static JMenu fileMenu;
   private static JMenu editMenu;
   private static JMenuItem loadListOfTags;
-  private static JMenuItem loadListOfPosts;
   private static JMenuItem saveListOfTags;
   private static JMenuItem saveListOfPosts;
   private static JMenuItem exitProgram;
   private static JMenuItem addTags;
   private static JMenuItem deleteTags;
-  private static JMenuItem addPostFromURL;
   // Items for User Interface
   private static JLabel tagLabel;
   private static JLabel postLabel;
@@ -131,31 +127,25 @@ public class TumblrReblogGUI extends JFrame
     editMenu = new JMenu("Edit");
 
     loadListOfTags = new JMenuItem("Load List Of Tags");
-    loadListOfPosts = new JMenuItem("Load List Of Posts");
     saveListOfTags = new JMenuItem("Save List Of Tags");
     saveListOfPosts = new JMenuItem("Save List Of Posts");
     exitProgram = new JMenuItem("Exit Program");
     addTags = new JMenuItem("Add Tag(s)");
     deleteTags = new JMenuItem("Delete Tag(s)");
-    addPostFromURL = new JMenuItem("Add Post From URL");
 
     loadListOfTags.addActionListener(new LoadListOfTagsEvent());
-    loadListOfPosts.addActionListener(new LoadListOfPostsEvent());
     saveListOfTags.addActionListener(new SaveListOfTagsEvent());
     saveListOfPosts.addActionListener(new SaveListOfPostsEvent());
     exitProgram.addActionListener(new ExitProgramEvent());
     addTags.addActionListener(new AddTagsEvent());
     deleteTags.addActionListener(new DeleteTagsEvent());
-    addPostFromURL.addActionListener(new AddPostFromURLEvent());
 
     fileMenu.add(loadListOfTags);
-    fileMenu.add(loadListOfPosts);
     fileMenu.add(saveListOfTags);
     fileMenu.add(saveListOfPosts);
     fileMenu.add(exitProgram);
     editMenu.add(addTags);
     editMenu.add(deleteTags);
-    editMenu.add(addPostFromURL);
 
     menuBar.add(fileMenu);
     menuBar.add(editMenu);
