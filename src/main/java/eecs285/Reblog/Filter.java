@@ -11,8 +11,8 @@ class PostBlogLikesComparator implements Comparator<Post>
 {
   public int compare(Post a, Post b)
   {
-    if ( App.client.blogInfo(a.getBlogName()).getLikeCount()
-            >= App.client.blogInfo(b.getBlogName()).getLikeCount())
+    if ( App.client.blogInfo(a.getBlogName()).getPostCount()
+            >= App.client.blogInfo(b.getBlogName()).getPostCount())
       return -1;
     else
       return 1;
@@ -26,6 +26,7 @@ public class Filter
 
   static Map<String, Map<String, Integer> > tagMap = new HashMap<>();
   static TreeSet<Post> postTreeSet;
+  static HashSet<Long> alreadyPosted = new HashSet<>();
 
   // gets top n posts to reblog by checking poster's popularity
   static List<Post> postsToReblog(List<Post> inPosts) {
@@ -35,8 +36,18 @@ public class Filter
     List<Post> topNPosts = new ArrayList<>();
 
     Iterator<Post> it = postTreeSet.iterator();
+    while (topNPosts.size() < numPostsToReblog) {
+      Post p = it.next();
+      long id = p.getId();
+      if (!alreadyPosted.contains(id)) {
+        alreadyPosted.add(id);
+        topNPosts.add(p);
+      }
+    }
+    /*
     for (int i = 0; i < numPostsToReblog; ++i)
       topNPosts.add(it.next());
+    */
 
     return topNPosts;
   }

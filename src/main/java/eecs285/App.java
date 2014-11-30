@@ -42,7 +42,7 @@ public class App
   private static final String CONSUMER_KEY = "fP4T709QbfTBOaR4mHLNFeE6BgbwxQw10qSypEN9onlWKGwsBn";
   private static final String CONSUMER_SECRET = "bnOedxoYrDveIr6mbg793VLkyhEF8RviaYyFFvuiWpajXZCFsB";
 
-  public static String blogName = "delicatedragonstarlight.tumblr.com";
+  public static String blogName = "letitkorra.tumblr.com";
 
   // Desktop Stuff
   private static Desktop userDesktop = Desktop.getDesktop();
