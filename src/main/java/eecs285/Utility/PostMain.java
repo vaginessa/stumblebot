@@ -19,6 +19,7 @@ public class PostMain
   public static void stopTimer()
   {
     time.cancel();
+    time.purge();
   }
   
   public static long getTime()

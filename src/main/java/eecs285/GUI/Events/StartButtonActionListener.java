@@ -13,7 +13,7 @@ public class StartButtonActionListener implements ActionListener
 
   public void actionPerformed(ActionEvent event)
   {
-    if( JOptionPane.showConfirmDialog(AddTagsEvent.getFrameDialog(),
+    if( JOptionPane.showConfirmDialog(StartButtonAction.getFrameDialog(),
         "Are you sure this is how long you want between each set of reposts?",
         "Confirmation", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION )
     {
