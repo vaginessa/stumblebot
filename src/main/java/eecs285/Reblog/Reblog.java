@@ -1,11 +1,12 @@
 package eecs285.Reblog;
 
-import com.tumblr.jumblr.types.Post;
-import eecs285.App;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import com.tumblr.jumblr.types.Post;
+
+import eecs285.App;
 
 public class Reblog
 {

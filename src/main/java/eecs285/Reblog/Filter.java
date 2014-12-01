@@ -1,10 +1,18 @@
 package eecs285.Reblog;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeSet;
+
 import com.tumblr.jumblr.types.Post;
 import com.tumblr.jumblr.types.TextPost;
-import eecs285.App;
 
-import java.util.*;
+import eecs285.App;
 
 //Goal is to take post, then modify for reblog;
 

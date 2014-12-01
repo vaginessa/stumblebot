@@ -1,14 +1,16 @@
 package eecs285.GUI.Events;
 
-import com.tumblr.jumblr.types.Post;
-import eecs285.App;
-import eecs285.GUI.TumblrReblogGUI;
-import eecs285.Reblog.Reblog;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.tumblr.jumblr.types.Post;
+
+import eecs285.App;
+import eecs285.GUI.Simulator;
+import eecs285.GUI.TumblrReblogGUI;
+import eecs285.Reblog.Filter;
 
 public class FilterPostsAction implements ActionListener
 {
@@ -24,10 +26,9 @@ public class FilterPostsAction implements ActionListener
       TumblrReblogGUI.original = false;
     }
 
-    @SuppressWarnings("unused")
-    Reblog action = new Reblog();
-    action.ReblogAll();
-
+    filteredPosts = Filter.postsToReblog(App.globalPosts);
+    App.globalPosts = filteredPosts;
+    Simulator.updatePosts();
     /*
      * Reblog Test
      * 
