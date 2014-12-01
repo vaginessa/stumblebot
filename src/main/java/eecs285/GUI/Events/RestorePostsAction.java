@@ -13,7 +13,7 @@ public class RestorePostsAction implements ActionListener
 {
   public void actionPerformed(ActionEvent actionEvent)
   {
-    if(!TumblrReblogGUI.original)
+    if( !TumblrReblogGUI.original )
     {
       App.globalPosts = App.globalPostsPreFilter;
       TumblrReblogGUI.original = true;
