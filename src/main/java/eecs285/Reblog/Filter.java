@@ -30,7 +30,7 @@ class PostBlogLikesComparator implements Comparator<Post>
 
 public class Filter
 {
-  static int numPostsToReblog = 10;
+  static int numPostsToReblog = 5;
 
   static Map<String, Map<String, Integer>> tagMap = new HashMap<>();
   static TreeSet<Post> postTreeSet;

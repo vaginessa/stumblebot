@@ -3,6 +3,7 @@ package eecs285.GUI.Events;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -10,7 +11,6 @@ import javax.swing.JOptionPane;
 import com.tumblr.jumblr.types.Post;
 
 import eecs285.App;
-import eecs285.Reblog.Reblog;
 
 public class ReblogConfirmActionListener implements ActionListener
 {
@@ -25,6 +25,8 @@ public class ReblogConfirmActionListener implements ActionListener
     {
       insertTags = new ArrayList<String>();
       selectedPost = ReblogButton.getSelectedPost();
+      long id = selectedPost.getId();
+      String key = selectedPost.getReblogKey();
       System.out.println(selectedPost.toString());
       String tagsInput = ReblogButton.getTagsText().replaceAll("\\s+", "");
       System.out.println(tagsInput);
@@ -38,7 +40,8 @@ public class ReblogConfirmActionListener implements ActionListener
       }
       selectedPost.setTags(insertTags);
       String messageInput = ReblogButton.getMessageText();
-      // Set message here
+      HashMap<String, Object> params = new HashMap<String, Object>();
+      params.put("comment", messageInput);
 
       System.out.println("Reblog post " + selectedPost.toString());
       System.out.println("With Tags: ");
@@ -49,7 +52,14 @@ public class ReblogConfirmActionListener implements ActionListener
       System.out.println();
       System.out.println("With Message: " + messageInput);
       System.out.println("Now following " + selectedPost.getBlogName());
-      Reblog.ReblogOne(selectedPost);
+      try {
+        App.client.postReblog(App.blogName, id, key, params);
+        //post.reblog(App.blogName);
+      }
+      catch( NullPointerException e )
+      {
+        System.out.println("Exception: " + e.getMessage());
+      }
       JOptionPane.showMessageDialog(App.win,
           "You have successfully reblogged this post and followed the user!",
           "Success", JOptionPane.INFORMATION_MESSAGE);
