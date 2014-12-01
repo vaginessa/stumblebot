@@ -9,6 +9,9 @@ import javax.swing.JOptionPane;
 
 import com.tumblr.jumblr.types.Post;
 
+import eecs285.App;
+import eecs285.Reblog.Reblog;
+
 public class ReblogConfirmActionListener implements ActionListener
 {
   private static Post selectedPost;
@@ -35,7 +38,8 @@ public class ReblogConfirmActionListener implements ActionListener
       }
       selectedPost.setTags(insertTags);
       String messageInput = ReblogButton.getMessageText();
-      // Set Message here
+      // Set message here
+
       System.out.println("Reblog post " + selectedPost.toString());
       System.out.println("With Tags: ");
       for( String stringIter : selectedPost.getTags() )
@@ -45,8 +49,10 @@ public class ReblogConfirmActionListener implements ActionListener
       System.out.println();
       System.out.println("With Message: " + messageInput);
       System.out.println("Now following " + selectedPost.getBlogName());
-      // selectedPost.reblog(App.ourBlog.getTitle());
-      // App.client.blogInfo(selectedPost.getBlogName()).follow();
+      Reblog.ReblogOne(selectedPost);
+      JOptionPane.showMessageDialog(App.win,
+          "You have successfully reblogged this post and followed the user!",
+          "Success", JOptionPane.INFORMATION_MESSAGE);
       ReblogButton.getFrameDialog().dispose();
       SelectPostDetail.getFrameDialog().dispose();
     }

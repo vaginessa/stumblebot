@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Reblog
 {
-  
+
   public static void ReblogOne(Post post)
   {
     System.out.println(post.toString());
@@ -33,23 +33,24 @@ public class Reblog
       App.client.postReblog(App.blogName, id, key, params);
       //post.reblog(App.blogName);
     }
-    catch (NullPointerException e)
+    catch( NullPointerException e )
     {
       System.out.println("Exception: " + e.getMessage());
     }
 
-    try {
+    try
+    {
       post.like();
     }
-    catch (NullPointerException e)
+    catch( NullPointerException e )
     {
       System.out.println("Exception: " + e.getMessage());
     }
 
     App.client.blogInfo(post.getBlogName()).follow();
   }
-  
-  
+
+
   public static void ReblogAll()
   {
     List<Post> postsToReblog = App.globalPosts;

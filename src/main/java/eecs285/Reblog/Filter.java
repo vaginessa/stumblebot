@@ -38,7 +38,9 @@ public class Filter
     List<Post> topNPosts = new ArrayList<>();
 
     Iterator<Post> it = postTreeSet.iterator();
-    while (topNPosts.size() < numPostsToReblog && it.hasNext()) {
+
+    while( topNPosts.size() < numPostsToReblog && it.hasNext() )
+    {
       Post p = it.next();
       long id = p.getId();
       if( !alreadyPosted.contains(id) )
@@ -117,13 +119,12 @@ public class Filter
     return tagsStrings;
   }
 
-  static void generateText()
-  {
+  static void generateText() {
     for (Post post : App.globalPosts) {
       List<String> tags = post.getTags();
 
       if (post.getType().equals("text")) {
-        String text = ((TextPost)post).getBody();
+        String text = ((TextPost) post).getBody();
         text = text.replaceAll("<[^>]*>", "");
         text = text.replace("&#8217;", "'");
         String[] sentences = text.split("(?<=[a-z])\\.\\s+");

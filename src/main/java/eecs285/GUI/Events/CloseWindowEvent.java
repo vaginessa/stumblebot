@@ -29,6 +29,8 @@ public class CloseWindowEvent implements WindowListener
           JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION )
       {
         System.out.print("Yes");
+        // We need to somehow disable the timer upon exiting the program.
+        // PostMain.stopTimer();
         App.win.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         App.win.setVisible(false);
         App.win.dispose();
