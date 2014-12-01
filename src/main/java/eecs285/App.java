@@ -69,10 +69,6 @@ public class App
     System.out.println();
     System.out.println("Now go and authorize Scribe here:");
     System.out.println(service.getAuthorizationUrl(requestToken));
-    JOptionPane.showMessageDialog(App.win, "Please log into Tumblr, "
-        + "allow stumblr to access data in your account,"
-        + " and copy the URL beginning with 'localhost' into console.",
-        "Authorization Required", JOptionPane.INFORMATION_MESSAGE);
     try
     {
       userDesktop.browse(new URI(service.getAuthorizationUrl(requestToken)));
@@ -83,12 +79,17 @@ public class App
     }
     while( !goodEntry )
     {
-      authentication = (String) JOptionPane.showInputDialog(App.win,
-          "Please enter the authentication code here:\n"
-              + "For Example, \"http://localhost:8080/?oauth_token"
-              + "=XXXXX&oauth_verifier=XXXXX#_=_\"\n"
-              + "Enter nothing and press Cancel to exit the program.",
-          "Enter Authentication Here", JOptionPane.PLAIN_MESSAGE);
+      authentication = (String) JOptionPane
+          .showInputDialog(
+              App.win,
+              "Please log into Tumblr and "
+                  + "allow stumblr to access data in your account.\n"
+                  + "Once you see a page with \"Access Error: 404 -- Not Found\", "
+                  + "copy the URL beginning with \"localhost\" into the box below\n"
+                  + "For Example, \"http://localhost:8080/?oauth_token"
+                  + "=XXXXX&oauth_verifier=XXXXX#_=_\"\n"
+                  + "Enter nothing and press Cancel to exit the program.",
+              "Enter Authentication Here", JOptionPane.PLAIN_MESSAGE);
       if( authentication == null )
       {
         if( JOptionPane.showConfirmDialog(App.win,
@@ -103,7 +104,7 @@ public class App
       {
         try
         {
-          if(!authentication.contains("&oauth_verifier="))
+          if( !authentication.contains("&oauth_verifier=") )
           {
             throw new OAuthException(authentication);
           }
@@ -124,13 +125,13 @@ public class App
           client.setToken(accessToken.getToken(), accessToken.getSecret());
           goodEntry = true;
         }
-        catch( OAuthException event)
+        catch( OAuthException event )
         {
           JOptionPane.showMessageDialog(App.win,
               "Your authentication code was incorrect. Try again.",
               "Incorrect Authentication", JOptionPane.WARNING_MESSAGE);
         }
-        catch(ArrayIndexOutOfBoundsException event)
+        catch( ArrayIndexOutOfBoundsException event )
         {
           JOptionPane.showMessageDialog(App.win,
               "Your authentication code was incorrect. Try again.",
