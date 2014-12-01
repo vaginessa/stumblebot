@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import eecs285.GUI.TumblrReblogGUI;
+import eecs285.Utility.PostMain;
 
 public class StopButtonAction implements ActionListener
 {
@@ -16,5 +17,7 @@ public class StopButtonAction implements ActionListener
     TumblrReblogGUI.getStartButton().setEnabled(true);
     TumblrReblogGUI.getStopButton().setEnabled(false);
     TumblrReblogGUI.getTimeButton().setEnabled(false);
+    
+    PostMain.stopTimer();
   }
 }
