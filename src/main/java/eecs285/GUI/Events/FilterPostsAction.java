@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import com.tumblr.jumblr.types.Post;
 
 import eecs285.App;
@@ -18,6 +20,14 @@ public class FilterPostsAction implements ActionListener
 
   public void actionPerformed(ActionEvent actionEvent)
   {
+    if(TumblrReblogGUI.justFiltered)
+    {
+      JOptionPane.showMessageDialog(App.win,
+          "You just Filtered!",
+          "Inane error",
+          JOptionPane.ERROR_MESSAGE);
+      return;
+    }
     TumblrReblogGUI.getRestoreButton().setEnabled(true);
     TumblrReblogGUI.getPostButton().setEnabled(true);
     if(TumblrReblogGUI.original)
@@ -29,6 +39,7 @@ public class FilterPostsAction implements ActionListener
     filteredPosts = Filter.postsToReblog(App.globalPosts);
     App.globalPosts = filteredPosts;
     Simulator.updatePosts();
+    TumblrReblogGUI.justFiltered = true;
     /*
      * Reblog Test
      * 

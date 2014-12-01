@@ -93,6 +93,7 @@ public class TumblrReblogGUI extends JFrame
   private static JButton getTimeButton;
 
   private static BufferedImage image;
+  public static boolean justFiltered = false;
 
   public TumblrReblogGUI()
   {

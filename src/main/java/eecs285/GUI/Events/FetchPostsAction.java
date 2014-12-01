@@ -9,6 +9,7 @@ import com.tumblr.jumblr.types.Post;
 
 import eecs285.App;
 import eecs285.GUI.Simulator;
+import eecs285.GUI.TumblrReblogGUI;
 import eecs285.Inputs.FindPosts;
 
 
@@ -16,6 +17,7 @@ public class FetchPostsAction implements ActionListener
 {
   public void actionPerformed(ActionEvent actionEvent)
   {
+    TumblrReblogGUI.justFiltered = false;
     List<Post> retrievedPosts = FindPosts.findFrom(App.globalTagsSeeded);
     for( Post test : retrievedPosts )
     {
