@@ -2,7 +2,6 @@ package eecs285.Reblog;
 
 import com.tumblr.jumblr.types.Post;
 import eecs285.App;
-import eecs285.GUI.Simulator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +28,7 @@ public class Reblog
 
     HashMap<String, Object> params = new HashMap<String, Object>();
     params.put("comment", text);
+
     try {
       App.client.postReblog(App.blogName, id, key, params);
       //post.reblog(App.blogName);
@@ -52,13 +52,10 @@ public class Reblog
   
   public static void ReblogAll()
   {
-    List<Post> postsToReblog = Filter.postsToReblog(App.globalPosts);
+    List<Post> postsToReblog = App.globalPosts;
     for( Post post : postsToReblog )
     {
       ReblogOne(post);
     }
-    postsToReblog = Filter.postsToReblog(App.globalPosts);
-    App.globalPosts = postsToReblog;
-    Simulator.updatePosts();
   }
 }
