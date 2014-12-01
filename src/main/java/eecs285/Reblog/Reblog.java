@@ -1,10 +1,10 @@
 package eecs285.Reblog;
 
-import com.tumblr.jumblr.types.Post;
-import eecs285.App;
-import eecs285.GUI.Simulator;
-
 import java.util.List;
+
+import com.tumblr.jumblr.types.Post;
+
+import eecs285.App;
 
 public class Reblog
 {
@@ -35,13 +35,10 @@ public class Reblog
   
   public static void ReblogAll()
   {
-    List<Post> postsToReblog = Filter.postsToReblog(App.globalPosts);
+    List<Post> postsToReblog = App.globalPosts;
     for( Post post : postsToReblog )
     {
       ReblogOne(post);
     }
-    postsToReblog = Filter.postsToReblog(App.globalPosts);
-    App.globalPosts = postsToReblog;
-    Simulator.updatePosts();
   }
 }

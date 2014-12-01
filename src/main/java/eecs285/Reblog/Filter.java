@@ -1,9 +1,17 @@
 package eecs285.Reblog;
 
-import com.tumblr.jumblr.types.Post;
-import eecs285.App;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeSet;
 
-import java.util.*;
+import com.tumblr.jumblr.types.Post;
+
+import eecs285.App;
 
 //Goal is to take post, then modify for reblog;
 
@@ -29,7 +37,7 @@ public class Filter
   static HashSet<Long> alreadyPosted = new HashSet<>();
 
   // gets top n posts to reblog by checking poster's popularity
-  static List<Post> postsToReblog(List<Post> inPosts) {
+  public static List<Post> postsToReblog(List<Post> inPosts) {
     postTreeSet = new TreeSet<>(new PostBlogLikesComparator());
     postTreeSet.addAll(inPosts);
 
