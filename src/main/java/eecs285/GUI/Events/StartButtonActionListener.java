@@ -9,6 +9,7 @@ import eecs285.Utility.PostMain;
 
 public class StartButtonActionListener implements ActionListener
 {
+  private static int minTime = 45;
   private static int totalTime = 0;
 
   public void actionPerformed(ActionEvent event)
@@ -20,7 +21,7 @@ public class StartButtonActionListener implements ActionListener
       totalTime += StartButtonAction.getHours() * 60 * 60;
       totalTime += StartButtonAction.getMinutes() * 60;
       totalTime += StartButtonAction.getSeconds();
-      if( totalTime > 45 )
+      if( totalTime > minTime )
       {
         PostMain.postMain(totalTime);
         StartButtonAction.getFrameDialog().dispose();
@@ -28,7 +29,7 @@ public class StartButtonActionListener implements ActionListener
       else
       {
         JOptionPane.showMessageDialog(StartButtonAction.getFrameDialog(),
-            "Please enter a time above 45 seconds", "Time Warning",
+            "Please enter a time above " + minTime + " seconds", "Time Warning",
             JOptionPane.WARNING_MESSAGE);
       }
     }
