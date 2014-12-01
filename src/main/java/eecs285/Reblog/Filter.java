@@ -132,6 +132,6 @@ public class Filter
 
   static void getTextForPost(Post inPost)
   {
-    //List<String> tags = inPost.getTags();
+    // List<String> tags = inPost.getTags();
   }
 }

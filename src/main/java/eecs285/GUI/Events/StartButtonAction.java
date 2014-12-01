@@ -34,12 +34,11 @@ public class StartButtonAction implements ActionListener
 
   public void actionPerformed(ActionEvent event)
   {
-    if(App.globalTagsSeeded.isEmpty())
+    if( App.globalTagsSeeded.isEmpty() )
     {
       JOptionPane.showMessageDialog(App.win,
           "Please seed some tag(s) before automating this program!",
-          "Seed Before Automation",
-          JOptionPane.WARNING_MESSAGE);
+          "Seed Before Automation", JOptionPane.WARNING_MESSAGE);
     }
     else
     {

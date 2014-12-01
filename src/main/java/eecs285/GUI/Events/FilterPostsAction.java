@@ -27,23 +27,24 @@ public class FilterPostsAction implements ActionListener
     Simulator.updatePosts();
 
 
-
-    /* Reblog Test
-
-    Post test = filteredPosts.get(5);
-
-    test.reblog("delicatedragonstarlight.tumblr.com");
-    String reblogKey = test.getReblogKey();
-    long postId = test.getId();
-
-    //Blog b = App.client.blogInfo("delicatedragonstarlight");
-    //List<Post> posts = App.client.blogPosts("delicatedragonstarlight");
-
-    //System.out.println(posts.get(0));
-    //posts.get(0).reblog("delicatedragonstarlight.tumblr.com");
-
-
-    //Post rebloggedPost = App.client.postReblog("delicatedragonstarlight.tumblr.com", postId, reblogKey);
-    */
+    /*
+     * Reblog Test
+     * 
+     * Post test = filteredPosts.get(5);
+     * 
+     * test.reblog("delicatedragonstarlight.tumblr.com"); String reblogKey =
+     * test.getReblogKey(); long postId = test.getId();
+     * 
+     * //Blog b = App.client.blogInfo("delicatedragonstarlight"); //List<Post>
+     * posts = App.client.blogPosts("delicatedragonstarlight");
+     * 
+     * //System.out.println(posts.get(0));
+     * //posts.get(0).reblog("delicatedragonstarlight.tumblr.com");
+     * 
+     * 
+     * //Post rebloggedPost =
+     * App.client.postReblog("delicatedragonstarlight.tumblr.com", postId,
+     * reblogKey);
+     */
   }
 }

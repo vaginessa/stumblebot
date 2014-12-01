@@ -17,7 +17,7 @@ public class StopButtonAction implements ActionListener
     TumblrReblogGUI.getStartButton().setEnabled(true);
     TumblrReblogGUI.getStopButton().setEnabled(false);
     TumblrReblogGUI.getTimeButton().setEnabled(false);
-    
+
     PostMain.stopTimer();
   }
 }

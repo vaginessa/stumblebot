@@ -20,8 +20,17 @@ public class StartButtonActionListener implements ActionListener
       totalTime += StartButtonAction.getHours() * 60 * 60;
       totalTime += StartButtonAction.getMinutes() * 60;
       totalTime += StartButtonAction.getSeconds();
-      PostMain.postMain(totalTime);
-      StartButtonAction.getFrameDialog().dispose();
+      if( totalTime > 45 )
+      {
+        PostMain.postMain(totalTime);
+        StartButtonAction.getFrameDialog().dispose();
+      }
+      else
+      {
+        JOptionPane.showMessageDialog(StartButtonAction.getFrameDialog(),
+            "Please enter a time above 45 seconds", "Time Warning",
+            JOptionPane.WARNING_MESSAGE);
+      }
     }
     else
     {

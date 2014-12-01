@@ -17,8 +17,7 @@ public class PostButtonAction implements ActionListener
   {
     Reblog.ReblogAll();
     JOptionPane.showMessageDialog(App.win,
-        "Reblogging all filtered posts was successful!",
-        "Success!",
+        "Reblogging all filtered posts was successful!", "Success!",
         JOptionPane.INFORMATION_MESSAGE);
   }
 }

@@ -11,11 +11,11 @@ public class PostTask extends TimerTask
 {
   static Date now;
   private static int totalTimes = 0;
-  
+
   public void run()
   {
     now = new Date();
-    System.out.println("Time is: " + now); //Replace this with actual stuff
+    System.out.println("Time is: " + now); // Replace this with actual stuff
     FetchPostsAction fetchNewPosts = new FetchPostsAction();
     fetchNewPosts.actionPerformed(null);
     Simulator.updatePosts();
@@ -25,9 +25,9 @@ public class PostTask extends TimerTask
     Simulator.updatePosts();
     System.out.println("Filtered new posts! " + totalTimes);
     totalTimes++;
-    
-    //PostButtonAction repostPosts = new PostButtonAction();
-    //repostPosts.actionPerformed(null);
+
+    // PostButtonAction repostPosts = new PostButtonAction();
+    // repostPosts.actionPerformed(null);
   }
-  
+
 }
