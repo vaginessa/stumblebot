@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import eecs285.App;
 import eecs285.GUI.TumblrReblogGUI;
+import eecs285.Utility.PostMain;
 
 public class CloseWindowEvent implements WindowListener
 {
@@ -29,6 +30,7 @@ public class CloseWindowEvent implements WindowListener
           JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION )
       {
         System.out.print("Yes");
+        PostMain.stopTimer();
         App.win.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         App.win.setVisible(false);
         App.win.dispose();
