@@ -4,13 +4,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import eecs285.GUI.TumblrReblogGUI;
-import eecs285.Utility.Timer;
+import eecs285.Utility.PostMain;
 
 public class StartButtonAction implements ActionListener
 {
+  public static int numPosts = 5;
+  
   public void actionPerformed(ActionEvent event)
   {
-    Timer.start();
+    PostMain.postMain();
+    
     TumblrReblogGUI.getFetchButton().setEnabled(false);
     TumblrReblogGUI.getFilterButton().setEnabled(false);
     TumblrReblogGUI.getRestoreButton().setEnabled(false);
