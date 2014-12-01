@@ -1,6 +1,7 @@
 package eecs285.Reblog;
 
 import com.tumblr.jumblr.types.Post;
+import com.tumblr.jumblr.types.TextPost;
 import eecs285.App;
 
 import java.util.*;
@@ -19,19 +20,20 @@ class PostBlogLikesComparator implements Comparator<Post>
   }
 }
 
-// Yogesh <-
 public class Filter
 {
-  static int numPostsToReblog = 10;
+  static int numPostsToReblog = 20;
 
   static Map<String, Map<String, Integer> > tagMap = new HashMap<>();
   static TreeSet<Post> postTreeSet;
   static HashSet<Long> alreadyPosted = new HashSet<>();
+  static HashMap<String, ArrayList<String>> tagTextMap = new HashMap<>();
 
   // gets top n posts to reblog by checking poster's popularity
   static List<Post> postsToReblog(List<Post> inPosts) {
     postTreeSet = new TreeSet<>(new PostBlogLikesComparator());
     postTreeSet.addAll(inPosts);
+    generateText();
 
     List<Post> topNPosts = new ArrayList<>();
 
@@ -40,6 +42,7 @@ public class Filter
       Post p = it.next();
       long id = p.getId();
       if (!alreadyPosted.contains(id)) {
+        System.out.println(id);
         alreadyPosted.add(id);
         topNPosts.add(p);
       }
@@ -52,7 +55,6 @@ public class Filter
     return topNPosts;
   }
 
-  
   /*
   Each Post is a list of tags
   List of of List of tags
@@ -63,8 +65,7 @@ public class Filter
   Goal is to build the Hashmap, you put in a post,
   in fires back associated tags;
   add count if things occur multiple times;
- 
- 
+
   * HashMap<String, HashMap<String, int> > tagMap
   * First HashMap maps tag (aka a post title) to another Hashmap;
   *  Second Hashmap maps Strings to ints.
@@ -111,14 +112,31 @@ public class Filter
 
     return tagsStrings;
   }
-  
-  static String titleForPost(Post inPost)
-  {
-    return inPost.getBlogName() + " Repost";
-  }
 
-  static void getTextForPost(Post inPost)
+  static void generateText()
   {
-    List<String> tags = inPost.getTags();
+    for (Post post : App.globalPosts) {
+      List<String> tags = post.getTags();
+
+      if (post.getType().equals("text")) {
+        String text = ((TextPost)post).getBody();
+        text = text.replaceAll("<[^>]*>", "");
+        text = text.replace("&#8217;", "'");
+        String[] sentences = text.split("(?<=[a-z])\\.\\s+");
+        ArrayList<String> sentencesList = new ArrayList<String>();
+
+        for (String sentence : sentences)
+          sentencesList.add(sentence);
+
+        for (String tag : tags) {
+          if (!tagTextMap.containsKey(tag))
+            tagTextMap.put(tag, new ArrayList<String>());
+
+          tagTextMap.get(tag).addAll(sentencesList);
+        }
+
+        System.out.println(text);
+      }
+    }
   }
 }

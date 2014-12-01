@@ -22,6 +22,7 @@ public class FilterPostsAction implements ActionListener
 
     @SuppressWarnings("unused")
     Reblog action = new Reblog();
+    action.ReblogAll();
 
 
 

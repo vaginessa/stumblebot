@@ -4,6 +4,8 @@ import com.tumblr.jumblr.types.Post;
 import eecs285.App;
 import eecs285.GUI.Simulator;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Reblog
@@ -13,8 +15,23 @@ public class Reblog
   {
     System.out.println(post.toString());
     post.setTags(Filter.tagsFromPost(post));
+    long id = post.getId();
+    String key = post.getReblogKey();
+    String text = "";
+
+    for (String tag : post.getTags()) {
+      HashMap<String, ArrayList<String>> map = Filter.tagTextMap;
+      if (map.containsKey(tag))
+        text.concat(map.get(tag).get(map.get(tag).size() - 1));
+    }
+
+    text.concat("Reblog/Like if you agree or somewhat agree!\n");
+
+    HashMap<String, Object> params = new HashMap<String, Object>();
+    params.put("comment", text);
     try {
-      post.reblog(App.blogName);
+      App.client.postReblog(App.blogName, id, key, params);
+      //post.reblog(App.blogName);
     }
     catch (NullPointerException e)
     {
