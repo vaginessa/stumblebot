@@ -38,7 +38,7 @@ public class Filter
     List<Post> topNPosts = new ArrayList<>();
 
     Iterator<Post> it = postTreeSet.iterator();
-    while (topNPosts.size() < numPostsToReblog) {
+    while (topNPosts.size() < numPostsToReblog && it.hasNext()) {
       Post p = it.next();
       long id = p.getId();
       if (!alreadyPosted.contains(id)) {
