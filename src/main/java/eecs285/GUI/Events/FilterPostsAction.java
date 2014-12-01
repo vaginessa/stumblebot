@@ -20,12 +20,15 @@ public class FilterPostsAction implements ActionListener
   {
     TumblrReblogGUI.getRestoreButton().setEnabled(true);
     TumblrReblogGUI.getPostButton().setEnabled(true);
-    App.globalPostsPreFilter = App.globalPosts;
+    if(TumblrReblogGUI.original)
+    {
+      App.globalPostsPreFilter = App.globalPosts;
+      TumblrReblogGUI.original = false;
+    }
 
     filteredPosts = Filter.postsToReblog(App.globalPosts);
     App.globalPosts = filteredPosts;
     Simulator.updatePosts();
-
 
     /*
      * Reblog Test

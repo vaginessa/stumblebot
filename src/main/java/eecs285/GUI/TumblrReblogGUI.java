@@ -51,6 +51,7 @@ public class TumblrReblogGUI extends JFrame
 {
   private static final long serialVersionUID = 1L;
   public static boolean saved = true;
+  public static boolean original = true;
   // Items for Menu
   private static JMenuBar menuBar;
   private static JMenu fileMenu;

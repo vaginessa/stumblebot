@@ -15,9 +15,18 @@ public class PostButtonAction implements ActionListener
 {
   public void actionPerformed(ActionEvent event)
   {
-    Reblog.ReblogAll();
-    JOptionPane.showMessageDialog(App.win,
-        "Reblogging all filtered posts was successful!", "Success!",
-        JOptionPane.INFORMATION_MESSAGE);
+    if( JOptionPane.showConfirmDialog(App.win,
+        "Are you sure you want to repost all " + App.globalPosts.size()
+            + " post(s)?", "Confirmation", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION )
+    {
+      Reblog.ReblogAll();
+      JOptionPane.showMessageDialog(App.win,
+          "Reblogging all filtered posts was successful!", "Success!",
+          JOptionPane.INFORMATION_MESSAGE);
+    }
+    else
+    {
+      return;
+    }
   }
 }
