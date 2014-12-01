@@ -24,6 +24,6 @@ public class PostMain
 
   public static long getTime()
   {
-    return PostTask.now.getTime() - startDate.getTime();
+    return new Date().getTime() - startDate.getTime();
   }
 }
